@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-rebond: var(--font-esrebond), ui-sans-serif, system-ui, sans-serif;
+  --font-times: "Times New Roman", Times, serif;
 }
