@@ -27,7 +27,8 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/components/*": ["./src/pages/components/*"],
+      "~/*": ["./src/*"],
     }
   },
   "include": [

@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+  --color-brand-text: #2A2A2D;
+  --color-bg-neutral-white: #F0F2F4;
+  --color-bg-banner: #DD2F20;
+  --color-text-banner: #7E1613;
+
   --font-rebond: var(--font-esrebond), ui-sans-serif, system-ui, sans-serif;
   --font-times: "Times New Roman", Times, serif;
+  --font-mono: var(--font-dmmono), monospace;
 }

@@ -4,7 +4,7 @@ import { type AppType } from "next/app";
 
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
-import { esRebond } from "~/styles/fonts";
+import { esRebond, dmMono } from "~/styles/fonts";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,7 +12,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <main className={`${esRebond.variable} font-sans`}>
+      <main className={`${esRebond.variable} ${dmMono.variable} font-sans bg-bg-neutral-white`}>
         <Component {...pageProps} />
       </main>
     </SessionProvider>
