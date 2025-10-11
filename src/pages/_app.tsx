@@ -6,6 +6,7 @@ import { esRebond, dmMono } from "~/styles/fonts";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import GetBreakpoints from "~/context/GetBreakpoints";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -13,9 +14,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-     <main className={`${esRebond.variable} ${dmMono.variable} font-sans bg-bg-neutral-white`}>
+      <GetBreakpoints />
+      <div className={`${esRebond.variable} ${dmMono.variable} font-sans bg-bg-neutral-white`}>
         <Component {...pageProps} />
-      </main>
+      </div>
     </SessionProvider>
   );
 };
