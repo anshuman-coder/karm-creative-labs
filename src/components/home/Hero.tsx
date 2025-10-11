@@ -19,7 +19,7 @@ const Hero = () => {
       enterFrom="opacity-0 scale-95"
       enterTo="opacity-100 scale-100"
     >
-      <div className='flex flex-1 flex-col justify-between md:justify-around items-center px-10 text-brand-text font-rebond text-3xl font-semibold text-center'>
+      <div className='flex flex-1 flex-col justify-between md:justify-around items-center px-10 text-brand-text font-rebond text-3xl md:text-6xl laptop:text-8xl font-semibold text-center'>
         <div className='flex-1 w-full flex flex-col md:flex-none justify-between items-center'>
           <p className='px-3'>Crafting stories that <span className='font-times italic font-bold'>inspire,</span></p>
           {/* here will be the image for mobile view */}
