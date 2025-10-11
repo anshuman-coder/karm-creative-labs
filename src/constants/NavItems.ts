@@ -18,11 +18,12 @@ export const NavMenuItems: Array<{
     url: '',
     key: 'services',
   },
-  {
-    label: 'For Startup',
-    url: '',
-    key: 'for-startup'
-  },
+  // for phase 2
+  // {
+  //   label: 'For Startup',
+  //   url: '',
+  //   key: 'for-startup'
+  // },
   {
     label: 'Contact',
     url: '',

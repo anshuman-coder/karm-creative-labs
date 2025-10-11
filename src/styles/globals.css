@@ -11,4 +11,13 @@
   --font-rebond: var(--font-esrebond), ui-sans-serif, system-ui, sans-serif;
   --font-times: "Times New Roman", Times, serif;
   --font-mono: var(--font-dmmono), monospace;
+
+  /* breakpoints */
+  --breakpoint-xs: 364px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-laptop: 1440px;
+  --breakpoint-2xl: 1536px;
 }
