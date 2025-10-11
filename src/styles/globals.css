@@ -7,6 +7,7 @@
   --color-text-banner: #7E1613;
   --color-bg-header-sm: #2AFFAA;
 
+  /* font family */
   --font-rebond: var(--font-esrebond), ui-sans-serif, system-ui, sans-serif;
   --font-times: "Times New Roman", Times, serif;
   --font-mono: var(--font-dmmono), monospace;
