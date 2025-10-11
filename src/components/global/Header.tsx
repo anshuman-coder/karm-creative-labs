@@ -18,7 +18,7 @@ const Header = () => {
   }, [breakpoint])
 
   return (
-    <header className='fixed top-0 left-0 right-0 w-full bg-white z-50 p-2 sm:p-8 md:pt-8 xl:p-12'>
+    <header className='fixed top-0 left-0 right-0 w-full bg-white z-50 p-2 sm:p-8 md:pt-8 md:pb-4 xl:pt-12'>
       <div className={clsx(
         'relative w-full flex flex-col justify-start items-start transition-all duration-200 ease-in-out',
         isMenuOpen

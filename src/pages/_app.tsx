@@ -15,7 +15,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <GetBreakpoints />
-      <div className={`${esRebond.variable} ${dmMono.variable} font-sans bg-bg-neutral-white`}>
+      <div className={`${esRebond.variable} ${dmMono.variable} font-sans bg-white`}>
         <Component {...pageProps} />
       </div>
     </SessionProvider>
