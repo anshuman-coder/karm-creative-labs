@@ -27,7 +27,7 @@ const Header = () => {
       )}>
         {
           breakpoint.isAndBelow(
-            'xs',
+            'sm',
             <MobileHeader isMenuOpen={isMenuOpen} handleMenuOpen={setisMenuOpen} />,
             <DesktopHeader />
           )

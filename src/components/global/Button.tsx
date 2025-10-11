@@ -11,33 +11,33 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
 }
 
-const GeneralDefinedClasses = 'text-black font-rebond border border-solid border-black'
+const GeneralDefinedClasses = 'text-black font-rebond border border-solid border-black cursor-pointer'
 
 const ContainerPaddingMappedOnSizeForIcon: Record<ButtonSize, string> = {
   sm: 'px-2 py-1 rounded-sm',
-  md: '', //need to be done on md screen
-  lg: '', // need to be done on large desktop screens
+  md: 'px-5 py-4 rounded-xl',
+  lg: 'px-5 py-6 rounded-xl',
 }
 
 const ContainerPaddingMappedOnSize: Record<ButtonSize, string> = {
   sm: 'px-2 py-1.5 rounded-sm',
-  md: '', //need to be done on md screen
-  lg: ''// need to be done on large desktop screens
+  md: 'px-5 py-3.5 rounded-xl',
+  lg: 'px-5 py-4 rounded-xl'
 } 
 
 const TextClassesMappedOnSize: Record<ButtonSize, string> = {
   sm: 'text-xs leading-1 font-semibold',
-  md: '', //need to be done on md screen
-  lg: ''// need to be done on large desktop screens
+  md: 'text-3xl leading-1 font-semibold',
+  lg: 'text-3xl leading-1 font-semibold'
 }
 
 const Button: FC<ButtonProps> = ({ className = '', label = 'label', iconBtn = false, icon, ...props }) => {
   const breakpoint = useBreakpoint()
   const _size: ButtonSize = useMemo(() => {
-    if (breakpoint?.current === 'md') return breakpoint.current
 
-    if (breakpoint?.isAndAbove('lg', true)) return 'lg'
-    if (breakpoint?.isAndBelow('sm', true)) return 'sm'
+    if(breakpoint?.isAndAbove('xl', true)) return 'lg'
+    if (breakpoint?.isAndAbove('md', true)) return 'md'
+    if (breakpoint?.isAndBelow('xs', true)) return 'sm'
 
     return 'md'
   }, [breakpoint])
