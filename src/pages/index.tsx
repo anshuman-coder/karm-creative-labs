@@ -18,7 +18,7 @@ export default function Home() {
       <MaxHeightWrapper className="!mt-4 sm:!mt-10 md:!mt-0 px-3 md:px-0 justify-center md:justify-start items-center min-h-auto">
         <Description className="flex-1" />
       </MaxHeightWrapper>
-      <MaxHeightWrapper className="!mt-4 sm:!mt-10 min-h-auto justify-center items-center">
+      <MaxHeightWrapper className="mt-16 sm:!mt-10 md:!mt-16 justify-center items-center !min-h-auto">
         <Standout />
       </MaxHeightWrapper>
       <MaxHeightWrapper>

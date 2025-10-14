@@ -14,8 +14,8 @@ const Description: FC<DescriptionProps> = ({ className = "" }) => {
         className,
       )}
     >
-      <div className="flex-1 relative max-w-4xl flex flex-col mx-auto justify-between bg-bg-banner rounded-[20px] md:rounded-none w-full h-full">
-        <div className="flex-1 pl-3  pr-5 pt-7 md:pt-10 pb-28 md:pb-0">
+      <div className="flex-1 relative max-w-7xl flex flex-col mx-auto justify-between bg-bg-banner rounded-3xl md:rounded-none w-full">
+        <div className="flex-1 pl-3  pr-5 pt-7 md:pt-10 pb-28 md:pb-0 laptop:pb-80 2xl:pb-72">
           <p className="font-rebond text-2xl md:text-4xl laptop:text-6xl leading-[1.2] font-semibold text-black">
             We are a creative-first agency helping brands design, build, and
             scale with purpose. Our team blends strategy, design, and technology
