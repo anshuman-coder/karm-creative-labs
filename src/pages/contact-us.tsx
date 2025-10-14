@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "~/components/contact-us/Hero";
 import Banner from "~/components/contact-us/Banner";
 import Footer from "~/components/contact-us/Footer";
+import PageHelmet from "~/components/global/PageHelmet";
 
 // --- HELPER COMPONENTS ---
 
@@ -145,6 +146,7 @@ const ContactForm = () => {
 export default function ContactUs() {
   return (
     <>
+      <PageHelmet title="Let's talk" />
       <main className="bg-black">
         <Hero />
         <Banner />
