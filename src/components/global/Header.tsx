@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type FC, Fragment } from "react";
+import React, { useEffect, useState, type FC } from "react";
 import Logo from "./Logo";
 import Button from "~/components/global/Button";
 import { Plus } from "lucide-react";
@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { NavMenuItems } from "~/constants/NavItems";
 import useBreakpoint from "~/hooks/useBreakpoint";
 import { Transition } from "@headlessui/react";
+
 
 const Header = () => {
   const breakpoint = useBreakpoint();
@@ -79,19 +80,20 @@ const MobileHeader: FC<MobileHeaderProps> = ({
       >
         <nav className="gap-y-3.5 px-3 pb-4">
           {NavMenuItems.map((item, index) => (
-            <div
-              key={item.key}
-              className="transform transition-all duration-300 ease-in-out"
-              style={{
-                transitionDelay: isMenuOpen ? `${index * 50}ms` : "0ms",
-                opacity: isMenuOpen ? 1 : 0,
-                transform: isMenuOpen ? "translateY(0)" : "translateY(-10px)",
-              }}
-            >
-              <p className="font-rebond text-xl leading-9 font-semibold">
-                {item.label}
-              </p>
-            </div>
+            <a key={item.key} href={item.url} className="no-underline">
+              <div
+                className="transform transition-all duration-300 ease-in-out"
+                style={{
+                  transitionDelay: isMenuOpen ? `${index * 50}ms` : "0ms",
+                  opacity: isMenuOpen ? 1 : 0,
+                  transform: isMenuOpen ? "translateY(0)" : "translateY(-10px)",
+                }}
+              >
+                <p className="font-rebond text-xl leading-9 font-semibold">
+                  {item.label}
+                </p>
+              </div>
+            </a>
           ))}
         </nav>
       </div>
@@ -117,9 +119,11 @@ const DesktopHeader = () => {
       <div className="bg-brand-text font-rebond absolute top-0 left-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/5 rounded-full text-lg font-semibold text-white">
         <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 shadow-2xl lg:gap-x-4">
           {NavMenuItems.map((item) => (
-            <p key={item.key} className="cursor-pointer">
-              {item.label}
-            </p>
+            <a key={item.key} href={item.url} className="no-underline">
+              <p key={item.key} className="cursor-pointer">
+                {item.label}
+              </p>
+            </a>
           ))}
         </nav>
       </div>

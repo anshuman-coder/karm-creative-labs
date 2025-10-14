@@ -26,7 +26,7 @@ export const NavMenuItems: Array<{
   // },
   {
     label: "Contact",
-    url: "",
+    url: "/contact-us",
     key: "contact",
   },
 ];
