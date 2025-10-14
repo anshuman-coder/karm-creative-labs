@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Hero = () => {
 
@@ -23,7 +23,7 @@ const Hero = () => {
                         <div className="relative bg-[#FF6A3A] w-[300px] h-[300px] sm:w-[300px] sm:h-[300px] lg:w-[540px] lg:h-[540px] rounded-full flex items-center justify-center cursor-pointer group">
                             {/* Text with responsive font size */}
                             <span className="text-white text-center text-[40px] sm:text-[64px] lg:text-[80px] font-bold leading-none transform transition-transform duration-300 group-hover:scale-110">
-                                LET'S WORK
+                                LET&apos;S WORK
                             </span>
                         </div>
                     </div>

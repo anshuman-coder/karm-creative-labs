@@ -56,7 +56,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='flex justify-center mt-8'>
-                    <img src="/assets/images/karm3.png" alt="Logo" className='md:h-[181px] lg:h-[432px]' />
+                    <Image src="/karm3.png" alt="Logo" className='md:h-[181px] lg:h-[432px]' />
                 </div>
 
                 <div className="flex flex-wrap justify-between items-center gap-4 text-sm">

@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import Header from '~/components/contact-us/Header';
+import React from 'react';
 import Hero from '~/components/contact-us/Hero';
 import Banner from '~/components/contact-us/Banner';
 import Footer from '~/components/contact-us/Footer';
@@ -55,7 +54,7 @@ const ContactForm = () => {
                     </div>
                     <div className="lg:col-span-10 col-span-12">
                         <h2 className="text-white font-rebond text-[30px] lg:text-[112px] md:text-[38px] not-italic font-semibold leading-normal lg:leading-[112px] md:leading-[80px]">
-                            Let's drop us a line and get the project started.
+                            Let&apos;s drop us a line and get the project started.
                         </h2>
                     </div>
                 </div>
@@ -66,7 +65,7 @@ const ContactForm = () => {
                     <div className="lg:col-span-1 space-y-10">
                         <div>
                             <h3 className="text-white font-rebond text-[20px] not-italic font-semibold leading-normal">Get in touch</h3>
-                            <p className="text-white font-rebond text-[30px] not-italic font-semibold leading-normal">We're excited to hear from you and let's start something amazing together.</p>
+                            <p className="text-white font-rebond text-[30px] not-italic font-semibold leading-normal">We&apos;re excited to hear from you and let&apos;s start something amazing together.</p>
                             <a href="mailto:rishav@karmlabs.com" className="text-white font-semibold text-lg mt-2 inline-block hover:text-orange-500 transition-colors">
                                 rishav@karmlabs.com
                             </a>
@@ -102,15 +101,15 @@ const ContactForm = () => {
     );
 };
 
-export default function App() {
+export default function ContactUs() {
     return (
-        <Fragment>
+        <>
             <main className="bg-black">
                 <Hero />
                 <Banner />
                 <ContactForm />
                 <Footer />
             </main>
-        </Fragment>
+        </>
     );
 }
