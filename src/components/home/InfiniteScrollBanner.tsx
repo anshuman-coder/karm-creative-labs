@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const InfiniteScrollBanner = () => {
-  const [isHovered, setIsHovered] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -30,17 +29,15 @@ const InfiniteScrollBanner = () => {
     const contentWidth = content.offsetWidth;
 
     const animate = () => {
-      if (!isHovered) {
-        position -= 1;
+      position -= 1;
         
-        // Reset position when first set has scrolled completely
-        if (Math.abs(position) >= contentWidth) {
-          position = 0;
-        }
-        
-        if (wrapper) {
-          wrapper.style.transform = `translateX(${position}px)`;
-        }
+      // Reset position when first set has scrolled completely
+      if (Math.abs(position) >= contentWidth) {
+        position = 0;
+      }
+      
+      if (wrapper) {
+        wrapper.style.transform = `translateX(${position}px)`;
       }
       
       animationId = requestAnimationFrame(animate);
@@ -59,14 +56,12 @@ const InfiniteScrollBanner = () => {
         }
       }
     };
-  }, [isHovered]);
+  }, []);
 
   return (
     <div 
       className="w-full overflow-hidden"
       style={{ maxWidth: '100vw' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div 
         ref={wrapperRef}
