@@ -8,7 +8,6 @@ import Services from "~/components/home/services/Services";
 import Standout from "~/components/home/Standout";
 
 export default function Home() {
-
   return (
     <>
       <PageHelmet title="Home" />

@@ -1,16 +1,24 @@
-import clsx from 'clsx'
-import React, { type FC, type ReactNode } from 'react'
+import clsx from "clsx";
+import React, { type FC, type ReactNode } from "react";
 
 interface MaxHeightWrapperProps {
-  children: ReactNode
-  className?: string
+  children: ReactNode;
+  className?: string;
 }
-const MaxHeightWrapper: FC<MaxHeightWrapperProps> = ({ children, className = '' }) => {
+const MaxHeightWrapper: FC<MaxHeightWrapperProps> = ({
+  children,
+  className = "",
+}) => {
   return (
-    <section className={clsx('w-full flex flex-col min-h-[calc(100vh-82px)] md:min-h-[calc(100vh-149px)] mt-20 sm:mt-36', className)}>
+    <section
+      className={clsx(
+        "mt-20 flex min-h-[calc(100vh-82px)] w-full flex-col sm:mt-36 md:min-h-[calc(100vh-149px)]",
+        className,
+      )}
+    >
       {children}
     </section>
-  )
-}
+  );
+};
 
-export default MaxHeightWrapper
+export default MaxHeightWrapper;

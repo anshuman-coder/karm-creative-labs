@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { DM_Mono } from 'next/font/google'
+import { DM_Mono } from "next/font/google";
 export const esRebond = localFont({
   src: [
     {
@@ -17,10 +17,9 @@ export const esRebond = localFont({
   display: "swap",
 });
 
-
 export const dmMono = DM_Mono({
-  variable: '--font-dmmono',
-  display: 'swap',
-  subsets: ['latin'],
-  weight: "400"
+  variable: "--font-dmmono",
+  display: "swap",
+  subsets: ["latin"],
+  weight: "400",
 });

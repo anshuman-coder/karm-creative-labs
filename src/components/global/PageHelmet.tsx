@@ -1,12 +1,12 @@
-import Head from 'next/head'
-import React, { type FC, type ReactNode } from 'react'
+import Head from "next/head";
+import React, { type FC, type ReactNode } from "react";
 
 interface PageHelmetProps {
-  title: string
-  children?: ReactNode
+  title: string;
+  children?: ReactNode;
 }
 
-const PageHelmet: FC<PageHelmetProps> = ({ title = '', children }) => {
+const PageHelmet: FC<PageHelmetProps> = ({ title = "", children }) => {
   return (
     <Head>
       <title>Karn creative labs: {`${title}`}</title>
@@ -14,7 +14,7 @@ const PageHelmet: FC<PageHelmetProps> = ({ title = '', children }) => {
       <link rel="icon" href="/favicon.ico" />
       {children}
     </Head>
-  )
-}
+  );
+};
 
-export default PageHelmet
+export default PageHelmet;
