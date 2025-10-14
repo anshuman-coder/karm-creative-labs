@@ -15,10 +15,10 @@ export default function Home() {
       <MaxHeightWrapper>
         <Hero />
       </MaxHeightWrapper>
-      <MaxHeightWrapper className="px-3 md:px-0">
-        <Description />
+      <MaxHeightWrapper className="!mt-4 sm:!mt-10 md:!mt-0 px-3 md:px-0 justify-center md:justify-start items-center min-h-auto">
+        <Description className="flex-1" />
       </MaxHeightWrapper>
-      <MaxHeightWrapper>
+      <MaxHeightWrapper className="!mt-4 sm:!mt-10 min-h-auto justify-center items-center">
         <Standout />
       </MaxHeightWrapper>
       <MaxHeightWrapper>

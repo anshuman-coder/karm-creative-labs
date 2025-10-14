@@ -1,5 +1,6 @@
 import React, { type FC } from "react";
 import clsx from "clsx";
+import InfiniteScrollBanner from "./InfiniteScrollBanner";
 
 interface DescriptionProps {
   className?: string;
@@ -9,75 +10,22 @@ const Description: FC<DescriptionProps> = ({ className = "" }) => {
   return (
     <div
       className={clsx(
-        "bg-bg-banner w-full rounded-[20px] md:rounded-none",
+        "flex flex-col justify-start items-start bg-bg-banner flex-1 w-full rounded-3xl md:rounded-none overflow-hidden",
         className,
       )}
     >
-      {/* Mobile (368px) - Card style with rounded corners */}
-      <div className="block md:hidden">
-        <div className="bg-bg-banner rounded-[20px] p-8">
-          <p className="font-rebond mb-8 text-2xl leading-[1.2] font-semibold text-black">
+      <div className="flex-1 relative max-w-4xl flex flex-col mx-auto justify-between bg-bg-banner rounded-[20px] md:rounded-none w-full h-full">
+        <div className="flex-1 pl-3  pr-5 pt-7 md:pt-10 pb-28 md:pb-0">
+          <p className="font-rebond text-2xl md:text-4xl laptop:text-6xl leading-[1.2] font-semibold text-black">
             We are a creative-first agency helping brands design, build, and
             scale with purpose. Our team blends strategy, design, and technology
             to craft experiences that inspire and drive growth. Whether you need
             a single expert or a full team, we deliver flexible solutions
             tailored to your goals.
           </p>
-          <div className="text-text-banner font-rebond flex flex-wrap gap-2 text-xl font-semibold">
-            <span>Visual Design.</span>
-            <span>Motion Design.</span>
-          </div>
         </div>
-      </div>
-
-      {/* Tablet (768px) - Full width with padding */}
-      <div className="hidden md:block lg:hidden">
-        <div className="px-8 py-16">
-          <p className="font-rebond text-brand-text mb-12 max-w-full text-[40px] leading-[1.2]">
-            We are a creative-first agency helping brands design, build, and
-            scale with purpose. Our team blends strategy, design, and technology
-            to craft experiences that inspire and drive growth. Whether you need
-            a single expert or a full team, we deliver flexible solutions
-            tailored to your goals.
-          </p>
-          <div className="text-text-banner font-rebond text-sm">
-            UX Design • Digital Marketing • Web Development • Branding • SEO •
-            Content Strategy • Social Media
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop 1440px */}
-      <div className="laptop:hidden hidden lg:block">
-        <div className="px-12 py-20">
-          <p className="font-rebond text-brand-text mb-16 max-w-[95%] text-[56px] leading-[1.15]">
-            We are a creative-first agency helping brands design, build, and
-            scale with purpose. Our team blends strategy, design, and technology
-            to craft experiences that inspire and drive growth. Whether you need
-            a single expert or a full team, we deliver flexible solutions
-            tailored to your goals.
-          </p>
-          <div className="text-text-banner font-rebond text-base">
-            UX Design • Digital Marketing • Web Development • Branding • SEO •
-            Content Strategy • Social Media
-          </div>
-        </div>
-      </div>
-
-      {/* Large Desktop 1573px+ */}
-      <div className="laptop:block hidden">
-        <div className="px-16 py-24">
-          <p className="font-rebond text-brand-text mb-20 max-w-[92%] text-[64px] leading-[1.15]">
-            We are a creative-first agency helping brands design, build, and
-            scale with purpose. Our team blends strategy, design, and technology
-            to craft experiences that inspire and drive growth. Whether you need
-            a single expert or a full team, we deliver flexible solutions
-            tailored to your goals.
-          </p>
-          <div className="text-text-banner font-rebond text-lg">
-            UX Design • Digital Marketing • Web Development • Branding • SEO •
-            Content Strategy • Social Media
-          </div>
+        <div className="w-full overflow-hidden absolute bottom-0 left-0 right-0 pb-4 md:pb-6">
+          <InfiniteScrollBanner />
         </div>
       </div>
     </div>

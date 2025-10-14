@@ -28,7 +28,7 @@ const Header = () => {
         )}
       >
         {breakpoint.isAndBelow(
-          "sm",
+          "xs",
           <MobileHeader
             isMenuOpen={isMenuOpen}
             handleMenuOpen={setisMenuOpen}
@@ -62,7 +62,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({
             icon={
               <Plus
                 className={clsx(
-                  "h-2 w-2 transform transition-all duration-200 ease-in-out",
+                  "h-2 w-2 sm:h-4 sm:w-4 transform transition-all duration-200 ease-in-out",
                   isMenuOpen ? "rotate-45" : "rotate-none",
                 )}
               />
@@ -116,7 +116,7 @@ const DesktopHeader = () => {
       className="flex w-full items-center justify-start"
     >
       <Logo />
-      <div className="bg-brand-text font-rebond absolute top-0 left-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/5 rounded-full text-lg font-semibold text-white">
+      <div className="bg-brand-text font-rebond absolute top-0 left-1/2 sm:-translate-x-2/5 md:-translate-x-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/5 rounded-full text-lg font-semibold text-white">
         <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 shadow-2xl lg:gap-x-4">
           {NavMenuItems.map((item) => (
             <a key={item.key} href={item.url} className="no-underline">
