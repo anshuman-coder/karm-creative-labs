@@ -14,12 +14,12 @@ const Clients: FC<ClientsProps> = ({ className = "" }) => {
   return (
     <div
       className={clsx(
-        "flex w-full flex-col justify-between bg-black px-3 md:px-6 pt-7 pb-14 max-w-5xl",
+        "flex w-full flex-col justify-between bg-black px-3 md:px-6 pt-7 pb-14 max-w-6xl",
         className,
       )}
     >
       <div className="flex flex-1 flex-col justify-center gap-8 md:gap-20">
-        <h2 className="font-rebond text-3xl md:text-5xl leading-[1.1] text-white font-semibold">
+        <h2 className="font-rebond text-3xl md:text-5xl xl:text-8xl leading-[1.1] text-white font-semibold">
           Clients Who <br /> Push Boundaries
         </h2>
         <div className="w-full flex flex-col sm:flex-row justify-between sm:justify-center md:justify-start lg:justify-end items-start md:items-center gap-6 md:gap-12">

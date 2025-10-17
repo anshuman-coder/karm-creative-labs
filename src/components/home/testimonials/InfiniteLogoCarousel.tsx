@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 interface Logo {
@@ -12,43 +12,80 @@ interface InfiniteLogoCarouselProps {
   direction?: 'left' | 'right';
 }
 
-const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({ 
-  logos, 
+const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
+  logos,
   speed = 1,
-  direction = 'left' 
+  direction = 'left'
 }) => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [scrollerWidth, setScrollerWidth] = useState(0);
 
   useEffect(() => {
-    const wrapper = wrapperRef.current;
-    const content = contentRef.current;
-    
-    if (!wrapper || !content) return;
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
 
-    // Clone content for seamless loop
-    const clone = content.cloneNode(true);
-    wrapper.appendChild(clone);
+    // Measure the width after images load
+    const measureWidth = () => {
+      const firstChild = scroller.querySelector('.logo-group')!;
+      setScrollerWidth(firstChild.scrollWidth);
+    };
+
+    // Wait for images to load
+    const images = scroller.querySelectorAll('img');
+    let loadedCount = 0;
+
+    const onImageLoad = () => {
+      loadedCount++;
+      if (loadedCount === images.length) {
+        measureWidth();
+      }
+    };
+
+    images.forEach((img) => {
+      if (img.complete) {
+        loadedCount++;
+      } else {
+        img.addEventListener('load', onImageLoad);
+      }
+    });
+
+    if (loadedCount === images.length) {
+      measureWidth();
+    }
+
+    // Cleanup
+    return () => {
+      images.forEach((img) => {
+        img.removeEventListener('load', onImageLoad);
+      });
+    };
+  }, [logos]);
+
+  useEffect(() => {
+    if (!scrollerWidth) return;
+
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
 
     let animationId: number;
     let position = 0;
-    const contentWidth = content.offsetWidth;
-    const moveAmount = direction === 'left' ? -speed : speed;
 
     const animate = () => {
+      const moveAmount = direction === 'left' ? -speed : speed;
       position += moveAmount;
-        
-      // Reset position when first set has scrolled completely
-      if (direction === 'left' && Math.abs(position) >= contentWidth) {
-        position = 0;
-      } else if (direction === 'right' && position >= contentWidth) {
-        position = 0;
+
+      // Reset position for seamless loop
+      if (direction === 'left') {
+        if (position <= -scrollerWidth) {
+          position = 0;
+        }
+      } else {
+        if (position >= 0) {
+          position = -scrollerWidth;
+        }
       }
-      
-      if (wrapper) {
-        wrapper.style.transform = `translateX(${position}px)`;
-      }
-      
+
+      scroller.style.transform = `translateX(${position}px)`;
       animationId = requestAnimationFrame(animate);
     };
 
@@ -58,30 +95,39 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-      // Clean up clone
-      if (wrapper.lastChild) {
-        wrapper.removeChild(wrapper.lastChild);
-      }
     };
-  }, [speed, direction]);
+  }, [scrollerWidth, speed, direction]);
 
   return (
-    <div 
-      className="w-full overflow-hidden"
-      style={{ maxWidth: '100vw' }}
-    >
-      <div 
-        ref={wrapperRef}
+    <div className="w-full overflow-hidden" style={{ maxWidth: '100vw' }}>
+      <div
+        ref={scrollerRef}
         className="flex will-change-transform"
         style={{ width: 'fit-content' }}
       >
-        <div 
-          ref={contentRef}
-          className="flex gap-8 lg:gap-12 flex-shrink-0 items-center"
-        >
+        {/* First set */}
+        <div className="logo-group flex gap-8 lg:gap-12 flex-shrink-0 items-center">
           {logos.map((logo, index) => (
             <div
-              key={index}
+              key={`first-${index}`}
+              className="relative flex h-12 w-auto items-center lg:h-14 flex-shrink-0"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={150}
+                height={56}
+                className="h-full w-auto object-contain brightness-0 invert"
+                style={{ height: "auto", maxHeight: "56px" }}
+              />
+            </div>
+          ))}
+        </div>
+        {/* Second set - duplicate with same spacing */}
+        <div className="logo-group flex gap-8 lg:gap-12 flex-shrink-0 items-center ml-8 lg:ml-12">
+          {logos.map((logo, index) => (
+            <div
+              key={`second-${index}`}
               className="relative flex h-12 w-auto items-center lg:h-14 flex-shrink-0"
             >
               <Image
