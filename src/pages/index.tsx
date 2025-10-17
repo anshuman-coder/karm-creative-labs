@@ -6,6 +6,7 @@ import Description from "~/components/home/Description";
 import Hero from "~/components/home/Hero";
 import Services from "~/components/home/services/Services";
 import Standout from "~/components/home/Standout";
+import Footer from "~/components/global/Footer";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <MaxHeightWrapper className="min-h-auto justify-center items-center bg-black !m-0">
         <Clients />
       </MaxHeightWrapper>
+      <Footer forPage="home" />
     </>
   );
 }
