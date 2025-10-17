@@ -13,13 +13,13 @@ export default function Home() {
     <>
       <PageHelmet title="Home" />
       <Header />
-      <MaxHeightWrapper>
+      <MaxHeightWrapper id="hero">
         <Hero />
       </MaxHeightWrapper>
-      <MaxHeightWrapper className="!mt-4 sm:!mt-10 md:!mt-0 px-3 md:px-0 justify-center md:justify-start items-center min-h-auto">
+      <MaxHeightWrapper id="about" className="!mt-4 sm:!mt-10 md:!mt-0 px-3 md:px-0 justify-center md:justify-start items-center min-h-auto">
         <Description className="flex-1" />
       </MaxHeightWrapper>
-      <MaxHeightWrapper className="mt-16 sm:!mt-10 md:!mt-16 justify-center items-center !min-h-auto">
+      <MaxHeightWrapper id="services" className="mt-16 sm:!mt-10 md:!mt-16 justify-center items-center !min-h-auto">
         <Standout />
       </MaxHeightWrapper>
       <MaxHeightWrapper>

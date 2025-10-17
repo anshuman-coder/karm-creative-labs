@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-brand-text: #2A2A2D;
   --color-bg-neutral-white: #F0F2F4;

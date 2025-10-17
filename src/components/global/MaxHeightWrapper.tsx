@@ -1,13 +1,14 @@
 import clsx from "clsx";
-import React, { type FC, type ReactNode } from "react";
+import React, { type FC, type ReactNode, type HTMLAttributes } from "react";
 
-interface MaxHeightWrapperProps {
+interface MaxHeightWrapperProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
 }
 const MaxHeightWrapper: FC<MaxHeightWrapperProps> = ({
   children,
   className = "",
+  ...props
 }) => {
   return (
     <section
@@ -15,6 +16,7 @@ const MaxHeightWrapper: FC<MaxHeightWrapperProps> = ({
         "mt-20 flex min-h-[calc(100vh-84px)] w-full flex-col sm:mt-36 md:min-h-[calc(100vh-140px)]",
         className,
       )}
+      {...props}
     >
       {children}
     </section>

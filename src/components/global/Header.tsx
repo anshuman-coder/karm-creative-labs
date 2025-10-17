@@ -17,6 +17,30 @@ const Header = () => {
     if (breakpoint.isAndAbove("sm", true)) setisMenuOpen(false);
   }, [breakpoint]);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    // Only handle hash links for smooth scrolling with offset
+    if (url.startsWith("#")) {
+      e.preventDefault();
+      const targetId = url.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Calculate offset based on header height
+        const headerHeight = breakpoint.isAndBelow("sm") ? 80 : 120;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+
+        // Close mobile menu after clicking
+        setisMenuOpen(false);
+      }
+    }
+  };
+
   return (
     <header className="fixed top-0 right-0 left-0 z-50 w-full bg-white p-2 sm:p-8 md:pt-8 md:pb-4 xl:pt-12">
       <div
@@ -32,8 +56,9 @@ const Header = () => {
           <MobileHeader
             isMenuOpen={isMenuOpen}
             handleMenuOpen={setisMenuOpen}
+            handleNavClick={handleNavClick}
           />,
-          <DesktopHeader />,
+          <DesktopHeader handleNavClick={handleNavClick} />,
         )}
       </div>
     </header>
@@ -45,11 +70,13 @@ export default Header;
 interface MobileHeaderProps {
   isMenuOpen: boolean;
   handleMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  handleNavClick: (e: React.MouseEvent<HTMLAnchorElement>, url: string) => void;
 }
 
 const MobileHeader: FC<MobileHeaderProps> = ({
   isMenuOpen,
   handleMenuOpen,
+  handleNavClick,
 }) => {
   return (
     <>
@@ -80,7 +107,12 @@ const MobileHeader: FC<MobileHeaderProps> = ({
       >
         <nav className="gap-y-3.5 px-3 pb-4">
           {NavMenuItems.map((item, index) => (
-            <a key={item.key} href={item.url} className="no-underline">
+            <a
+              key={item.key}
+              href={item.url}
+              className="no-underline"
+              onClick={(e) => handleNavClick(e, item.url)}
+            >
               <div
                 className="transform transition-all duration-300 ease-in-out"
                 style={{
@@ -101,7 +133,11 @@ const MobileHeader: FC<MobileHeaderProps> = ({
   );
 };
 
-const DesktopHeader = () => {
+interface DesktopHeaderProps {
+  handleNavClick: (e: React.MouseEvent<HTMLAnchorElement>, url: string) => void;
+}
+
+const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
   const [show, setShow] = useState(false);
   useEffect(() => {
     setShow(true);
@@ -119,8 +155,13 @@ const DesktopHeader = () => {
       <div className="bg-brand-text font-rebond absolute top-0 left-1/2 sm:-translate-x-2/5 md:-translate-x-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/5 rounded-full text-lg font-semibold text-white">
         <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 shadow-2xl lg:gap-x-4">
           {NavMenuItems.map((item) => (
-            <a key={item.key} href={item.url} className="no-underline">
-              <p key={item.key} className="cursor-pointer">
+            <a
+              key={item.key}
+              href={item.url}
+              className="no-underline"
+              onClick={(e) => handleNavClick(e, item.url)}
+            >
+              <p className="cursor-pointer">
                 {item.label}
               </p>
             </a>

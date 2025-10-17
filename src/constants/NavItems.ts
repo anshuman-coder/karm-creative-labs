@@ -5,17 +5,17 @@ export const NavMenuItems: Array<{
 }> = [
   {
     label: "Home",
-    url: "",
+    url: "#hero",
     key: "home",
   },
   {
     label: "About",
-    url: "",
+    url: "#about",
     key: "about",
   },
   {
     label: "Services",
-    url: "",
+    url: "#services",
     key: "services",
   },
   // for phase 2
