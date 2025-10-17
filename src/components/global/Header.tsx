@@ -28,7 +28,7 @@ const Header = () => {
         )}
       >
         {breakpoint.isAndBelow(
-          "xs",
+          "sm",
           <MobileHeader
             isMenuOpen={isMenuOpen}
             handleMenuOpen={setisMenuOpen}
@@ -56,13 +56,13 @@ const MobileHeader: FC<MobileHeaderProps> = ({
       <div className="flex w-full items-center justify-between px-1.5 py-3 md:px-6 md:py-4">
         <Logo />
         <div className="flex items-center justify-center gap-2">
-          <Button label="LET'S TALK" />
+          <Button label="LET'S TALK" className="sm:py-5" />
           <Button
             iconBtn
             icon={
               <Plus
                 className={clsx(
-                  "h-2 w-2 sm:h-4 sm:w-4 transform transition-all duration-200 ease-in-out",
+                  "h-2 w-2 sm:h-3 sm:w-3 transform transition-all duration-200 ease-in-out",
                   isMenuOpen ? "rotate-45" : "rotate-none",
                 )}
               />

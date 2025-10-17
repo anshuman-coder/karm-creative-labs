@@ -1,12 +1,19 @@
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import useBreakpoint from "~/hooks/useBreakpoint";
 import Button from "../global/Button";
+import { useRouter } from "next/router";
 
 const Hero = () => {
+  const router = useRouter()
   const breakpoint = useBreakpoint();
   const [transitionshow, setTransitionshow] = useState(false);
+
+  const letsTalkClick = useCallback(() => {
+    void router.push('/contact-us')
+  }, [router])
+
   useEffect(() => {
     setTransitionshow(true);
   }, []);
@@ -42,7 +49,7 @@ const Hero = () => {
             <span className="font-times font-bold italic">engage.</span>
           </p>
         </div>
-        {breakpoint.isAndAbove("md", <Button label="LET'S TALK" />)}
+        {breakpoint.isAndAbove("md", <Button label="LET'S TALK" className="py-6" onClick={letsTalkClick} />)}
       </div>
     </Transition>
   );
