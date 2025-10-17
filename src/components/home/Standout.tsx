@@ -9,15 +9,15 @@ const Standout: FC<StandoutProps> = ({ className = "" }) => {
   return (
     <div
       className={clsx(
-        "flex w-full flex-col justify-between px-5 md:px-8 lg:px-12 laptop:px-16 max-w-5xl",
+        "flex w-full flex-col justify-between px-5 md:px-8 lg:px-12 xl:px-0 max-w-6xl",
         className,
       )}
     >
       <div className="flex flex-1 flex-col sm:flex-row justify-center md:justify-between w-full gap-5 md:gap-12">
-        <h2 className="max-w-md font-rebond mb-7 text-4xl md:text-5xl laptop:text-8xl leading-[1.1] text-brand-text font-semibold">
+        <h2 className="font-rebond mb-7 text-4xl md:text-5xl xl:text-8xl leading-[1.1] text-brand-text font-semibold">
           Standout Services that shape ideas into impact.
         </h2>
-        <p className="max-w-[253px] font-rebond font-medium md:font-semibold text-xl md:text-lg laptop:text-2xl leading-[1.4] text-brand-text pt-0 md:pt-3">
+        <p className="max-w-[253px] font-rebond font-medium md:font-semibold text-xl md:text-lg xl:text-2xl leading-[1.4] text-brand-text pt-0 md:pt-3">
           From design to launch, we craft solutions that drive growth.
         </p>
       </div>
