@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { TestimonialsLogos } from "~/constants/clients";
 import useBreakpoint from "~/hooks/useBreakpoint";
 import InfiniteLogoCarousel from "./InfiniteLogoCarousel";
+import LogoFlip from "./LogoFlip";
 
 interface ClientsProps {
   className?: string;
@@ -41,6 +42,13 @@ const Clients: FC<ClientsProps> = ({ className = "" }) => {
             logos={TestimonialsLogos}
             speed={1}
             direction="left"
+          />
+        </div>
+      ), (
+        <div className="mt-8">
+          <LogoFlip
+            logos={TestimonialsLogos}
+            interval={2500}
           />
         </div>
       ))}

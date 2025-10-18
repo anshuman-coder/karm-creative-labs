@@ -19,45 +19,57 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
 }) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [scrollerWidth, setScrollerWidth] = useState(0);
+  const loadedCountRef = useRef(0);
+  const imageListRef = useRef<HTMLImageElement[]>([]);
 
   useEffect(() => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
+    // Reset loaded count
+    loadedCountRef.current = 0;
+
     // Measure the width after images load
     const measureWidth = () => {
-      const firstChild = scroller.querySelector('.logo-group')!;
-      setScrollerWidth(firstChild.scrollWidth);
+      const firstChild = scroller.querySelector('.logo-group');
+      if (firstChild) {
+        setScrollerWidth(firstChild.scrollWidth);
+      }
     };
 
-    // Wait for images to load
-    const images = scroller.querySelectorAll('img');
-    let loadedCount = 0;
+    // Get images and convert NodeList to Array
+    const imageNodeList = scroller.querySelectorAll('img');
+    const images = Array.from(imageNodeList);
+    imageListRef.current = images;
 
     const onImageLoad = () => {
-      loadedCount++;
-      if (loadedCount === images.length) {
+      loadedCountRef.current++;
+      if (loadedCountRef.current === images.length) {
         measureWidth();
       }
     };
 
     images.forEach((img) => {
       if (img.complete) {
-        loadedCount++;
+        loadedCountRef.current++;
       } else {
         img.addEventListener('load', onImageLoad);
       }
     });
 
-    if (loadedCount === images.length) {
+    if (loadedCountRef.current === images.length) {
       measureWidth();
     }
 
     // Cleanup
     return () => {
-      images.forEach((img) => {
+      // Remove event listeners from captured image array
+      imageListRef.current.forEach((img) => {
         img.removeEventListener('load', onImageLoad);
       });
+      // Clear image list reference
+      imageListRef.current = [];
+      loadedCountRef.current = 0;
     };
   }, [logos]);
 
@@ -67,7 +79,7 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
-    let animationId: number;
+    let animationId: number | null = null;
     let position = 0;
 
     const animate = () => {
@@ -85,15 +97,24 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
         }
       }
 
-      scroller.style.transform = `translateX(${position}px)`;
+      // Apply transform only if scroller still exists
+      if (scrollerRef.current) {
+        scrollerRef.current.style.transform = `translateX(${position}px)`;
+      }
+
       animationId = requestAnimationFrame(animate);
     };
 
     animationId = requestAnimationFrame(animate);
 
     return () => {
-      if (animationId) {
+      if (animationId !== null) {
         cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+      // Reset transform using captured scroller reference
+      if (scroller) {
+        scroller.style.transform = 'translateX(0px)';
       }
     };
   }, [scrollerWidth, speed, direction]);
