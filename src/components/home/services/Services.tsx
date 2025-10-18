@@ -1,7 +1,7 @@
 import React, { type FC } from "react";
 import clsx from "clsx";
-import ServiceCard from "./ServiceCard";
 import { ServicesListing } from "~/constants/Services";
+import Card from "./Card";
 
 interface ServicesProps {
   className?: string;
@@ -17,7 +17,7 @@ const Services: FC<ServicesProps> = ({ className = "" }) => {
     >
       <div className="flex flex-col gap-8 md:gap-12 lg:gap-16">
         {ServicesListing.map((service) => (
-          <ServiceCard
+          <Card
             key={service.number}
             number={service.number}
             title={service.title}
