@@ -10,7 +10,7 @@ const Description: FC<DescriptionProps> = ({ className = "" }) => {
   return (
     <div
       className={clsx(
-        "flex flex-col justify-start items-start flex-1 w-full max-w-[1440px] rounded-3xl overflow-hidden",
+        "flex flex-col justify-start items-start flex-1 w-full max-w-[1330px] rounded-3xl overflow-hidden",
         className,
       )}
     >
