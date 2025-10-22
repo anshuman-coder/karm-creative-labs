@@ -7,13 +7,17 @@ interface LogoProps {
 }
 const Logo: FC<LogoProps> = ({ className = "" }) => {
   return (
-    <Image
-      src="/karn-logo.png"
-      alt="karn-logo"
-      width={89}
-      height={35}
-      className={clsx(className)}
-    />
+    <div className={clsx(
+      "relative flex items-center justify-center p-1",
+      className,
+    )}>
+      <Image
+        src="/karn-logo.png"
+        alt="karn-logo"
+        fill
+        className="object-fill"
+      />
+    </div>
   );
 };
 

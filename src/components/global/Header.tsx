@@ -81,7 +81,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({
   return (
     <>
       <div className="flex w-full items-center justify-between px-1.5 py-3 md:px-6 md:py-4">
-        <Logo />
+        <Logo className="w-20 h-9" />
         <div className="flex items-center justify-center gap-2">
           <Button label="LET'S TALK" className="sm:py-5" />
           <Button
@@ -151,7 +151,7 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
       enterTo="opacity-100 translate-y-0"
       className="flex w-full items-center justify-start"
     >
-      <Logo />
+      <Logo className="w-16 h-8 xl:w-40 xl:h-16 2xl:w-56 2xl:h-24" />
       <div className="bg-brand-text font-rebond absolute top-0 left-1/2 sm:-translate-x-2/5 md:-translate-x-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/5 rounded-full text-lg font-semibold text-white">
         <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 shadow-2xl lg:gap-x-4">
           {NavMenuItems.map((item) => (
