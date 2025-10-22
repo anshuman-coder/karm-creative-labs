@@ -18,6 +18,11 @@ export const NavMenuItems: Array<{
     url: "#services",
     key: "services",
   },
+  {
+    label: "Testimonials",
+    url: "#testimonials",
+    key: "testimonials",
+  },
   // for phase 2
   // {
   //   label: 'For Startup',

@@ -2,16 +2,16 @@ import React, { type FC } from "react";
 import Image from "next/image";
 import { useBreakpoint } from "~/hooks/useBreakpoint";
 
-interface FooterProps {
+interface FooterProps extends React.HTMLAttributes<HTMLElement> {
   forPage: 'home' | 'contact'
 }
 
-const Footer: FC<FooterProps> = ({ forPage = 'contact' }) => {
+const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
 
   const breakpoint = useBreakpoint();
 
   return (
-    <footer className="bg-bg-header-sm p-4 text-black md:px-6 md:py-12">
+    <footer className="bg-bg-header-sm p-4 text-black md:px-6 md:py-12" {...props}>
       <div className="container mx-auto sm:mx-0 w-full md:px-10">
         {(forPage === 'home' || breakpoint.current === 'md') && (
           <div className="text-4xl md:text-5xl xl:text-[80px] font-rebond font-semibold text-black leading-normal not-italic">

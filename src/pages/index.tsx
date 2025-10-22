@@ -25,7 +25,7 @@ export default function Home() {
       <MaxHeightWrapper>
         <Services />
       </MaxHeightWrapper>
-      <MaxHeightWrapper className="min-h-auto justify-center items-center bg-black !m-0">
+      <MaxHeightWrapper id="testimonials" className="min-h-auto justify-center items-center bg-black !m-0">
         <Clients />
       </MaxHeightWrapper>
       <Footer forPage="home" />
