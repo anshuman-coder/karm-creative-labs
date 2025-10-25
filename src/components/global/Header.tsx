@@ -7,15 +7,90 @@ import { NavMenuItems } from "~/constants/NavItems";
 import useBreakpoint from "~/hooks/useBreakpoint";
 import { Transition } from "@headlessui/react";
 
+const SCROLL_DOWN_DELAY = 900; // Hide header after 900ms of scrolling down
+const SCROLL_UP_DELAY = 500; // Show header after 500ms of scrolling up
+
 
 const Header = () => {
   const breakpoint = useBreakpoint();
   const [isMenuOpen, setisMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const lastScrollY = React.useRef(0);
+  const isProgrammaticScroll = React.useRef(false);
+  const scrollTimer = React.useRef<NodeJS.Timeout | null>(null);
+  const currentScrollDirection = React.useRef<'up' | 'down' | null>(null);
 
   useEffect(() => {
     // closing the menu dropdown if breakpoint is desktop
     if (breakpoint.isAndAbove("sm", true)) setisMenuOpen(false);
   }, [breakpoint]);
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+      // Don't hide header during programmatic scroll (nav clicks)
+      if (isProgrammaticScroll.current) {
+        return;
+      }
+
+      const currentScrollY = window.scrollY;
+      const scrollDifference = currentScrollY - lastScrollY.current;
+
+      if (currentScrollY < 10) {
+        // Always show header at the top of the page
+        setIsHeaderVisible(true);
+        if (scrollTimer.current) {
+          clearTimeout(scrollTimer.current);
+          scrollTimer.current = null;
+        }
+        currentScrollDirection.current = null;
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      // Determine scroll direction
+      let direction: 'up' | 'down' | null = null;
+      if (scrollDifference > 5) {
+        direction = 'down';
+      } else if (scrollDifference < -5) {
+        direction = 'up';
+      }
+
+      // If direction changed, clear existing timer
+      if (direction && direction !== currentScrollDirection.current) {
+        if (scrollTimer.current) {
+          clearTimeout(scrollTimer.current);
+          scrollTimer.current = null;
+        }
+        currentScrollDirection.current = direction;
+
+        // Start new timer based on direction
+        if (direction === 'down') {
+          scrollTimer.current = setTimeout(() => {
+            setIsHeaderVisible(false);
+          }, SCROLL_DOWN_DELAY);
+        } else if (direction === 'up') {
+          scrollTimer.current = setTimeout(() => {
+            setIsHeaderVisible(true);
+          }, SCROLL_UP_DELAY);
+        }
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimer.current) {
+        clearTimeout(scrollTimer.current);
+        scrollTimer.current = null;
+      }
+    };
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
     // Only handle hash links for smooth scrolling with offset
@@ -25,6 +100,9 @@ const Header = () => {
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
+        // Set flag to prevent header from hiding during programmatic scroll
+        isProgrammaticScroll.current = true;
+
         // Calculate offset based on header height
         const headerHeight = breakpoint.isAndBelow("sm") ? 80 : 120;
         const elementPosition = targetElement.getBoundingClientRect().top;
@@ -37,12 +115,25 @@ const Header = () => {
 
         // Close mobile menu after clicking
         setisMenuOpen(false);
+
+        // Reset flag after scroll completes (smooth scroll takes ~500-1000ms)
+        setTimeout(() => {
+          isProgrammaticScroll.current = false;
+        }, 1000);
       }
     }
   };
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 w-full bg-white p-2 sm:p-8 md:pt-8 md:pb-4 xl:pt-12">
+    <header
+      className={clsx(
+        "fixed top-0 right-0 left-0 z-50 w-full backdrop-blur-2xl p-2 sm:p-8 md:pt-8 md:pb-4 xl:pt-10 transition-transform duration-500 ease-in-out",
+        isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+      )}
+      style={{
+        background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 70%, rgba(255, 255, 255, 0.1) 100%)'
+      }}
+    >
       <div
         className={clsx(
           "relative flex w-full flex-col items-start justify-start transition-all duration-200 ease-in-out",
@@ -151,7 +242,7 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
       enterTo="opacity-100 translate-y-0"
       className="flex w-full items-center justify-start"
     >
-      <Logo className="w-16 h-8 xl:w-40 xl:h-16 2xl:w-56 2xl:h-24" />
+      <Logo className="w-16 h-8 xl:w-[157px] xl:h-[61px] 2xl:w-[225px] 2xl:h-[87px]" />
       <div className="bg-brand-text font-rebond absolute top-1/2 left-1/2 sm:-translate-x-2/5 md:-translate-x-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full text-lg font-semibold text-white">
         <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 shadow-2xl lg:gap-x-4">
           {NavMenuItems.map((item) => (
