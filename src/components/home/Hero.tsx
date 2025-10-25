@@ -29,7 +29,7 @@ const Hero = () => {
       <div className="text-brand-text font-rebond laptop:text-8xl flex flex-1 flex-col items-center justify-between px-10 text-center text-3xl font-semibold md:justify-around md:text-6xl">
         <div className="flex w-full flex-1 flex-col items-center justify-between md:flex-none">
           <p className="px-3">
-            Crafting stories that{" "}
+            Crafting stories <br />that{" "}
             <span className="font-times font-bold italic">inspire,</span>
           </p>
           {/* here will be the image for mobile view */}
@@ -44,8 +44,8 @@ const Hero = () => {
               />
             </div>,
           )}
-          <p className="px-[68px]">
-            designs that{" "}
+          <p className="px-[60px]">
+            designs {breakpoint.isAndBelow('sm', <br />)} that{" "}
             <span className="font-times font-bold italic">engage.</span>
           </p>
         </div>
