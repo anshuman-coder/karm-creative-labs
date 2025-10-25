@@ -15,7 +15,7 @@ const Clients: FC<ClientsProps> = ({ className = "" }) => {
   return (
     <div
       className={clsx(
-        "flex w-full flex-col justify-between bg-black px-3 md:px-6 pt-7 pb-14 max-w-6xl",
+        "flex w-full flex-col justify-between bg-black px-5 md:px-8 lg:px-12",
         className,
       )}
     >
@@ -25,13 +25,10 @@ const Clients: FC<ClientsProps> = ({ className = "" }) => {
         </h2>
         <div className="w-full flex flex-col sm:flex-row justify-between sm:justify-center md:justify-start lg:justify-end items-start md:items-center gap-6 md:gap-12">
           <p className="font-rebond text-sm leading-[1.4] text-white font-semibold max-w-[278px]">
-            We&apos;ve had the privilege of working with brands of all sizes —
-            from ambitious startups to global enterprises.
+            We’ve had the privilege of collaborating with brands of every scale, from bold, ambitious startups to established global enterprises. Each partnership brings a new challenge, a fresh story, and an opportunity to create something meaningful.
           </p>
           <p className="font-rebond text-sm leading-[1.4] text-white font-semibold max-w-[278px]">
-            Each project is a partnership, and we&apos;re proud of the work
-            we&apos;ve created together. These are just a few we&apos;ve had the
-            chance to team up with.
+            Every project is more than just work; it’s a shared journey. We take pride in the impact we’ve made together and the ideas we’ve brought to life
           </p>
         </div>
       </div>
