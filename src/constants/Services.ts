@@ -58,7 +58,7 @@ export const ServicesListing = [
     number: "05",
     title: "Performance Marketing",
     description:
-      "We turn data into decisions, and the ROI(X). eCtr Skills drive your business through growth.",
+      "We don’t just chase clicks, we turn data into domination, delivering ROI(X) that makes your growth impossible to ignore.",
     features: [
       "Paid Advertising (Google, Meta, LinkedIn)",
       "SEO & Content Optimization",

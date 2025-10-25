@@ -16,8 +16,8 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
   return (
     <article className={clsx(
       'w-full flex flex-col justify-start items-center',
-      'border-b border-solid border-brand-text',
-      'pb-8 md:pb-12 lg:pb-16 gap-3',
+      'border-t border-solid border-brand-text',
+      'pt-4 md:pt-6 lg:pt-8 gap-3',
       'font-rebond text-brand-text',
       className,
     )}>
