@@ -15,7 +15,7 @@ const Clients: FC<ClientsProps> = ({ className = "" }) => {
   return (
     <div
       className={clsx(
-        "flex w-full flex-col justify-between bg-black px-5 md:px-8 lg:px-12",
+        "flex w-full flex-col justify-between bg-black pt-4 md:pt-0 px-5 md:px-8 lg:px-12",
         className,
       )}
     >
