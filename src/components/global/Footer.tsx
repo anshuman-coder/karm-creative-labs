@@ -11,16 +11,12 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
   const breakpoint = useBreakpoint();
 
   return (
-    <footer className="bg-bg-header-sm p-4 text-black md:px-6 md:py-12" {...props}>
-      <div className="container mx-auto sm:mx-0 w-full md:px-10">
+    <footer className="flex justify-center items-center bg-bg-header-sm p-4 text-black md:px-6 md:py-12 w-full" {...props}>
+      <div className="w-full md:px-10">
         {(forPage === 'home' || breakpoint.current === 'md') && (
-          <div className="text-4xl md:text-5xl xl:text-[80px] font-rebond font-semibold text-black leading-normal not-italic">
+          <div className="text-4xl md:text-5xl xl:text-[80px] font-rebond font-semibold text-black leading-normal not-italic mb-8">
             <div className="text-wrap text-left">
-              Each Partnership Inspires Us From Bold Startups To Global
-              Enterprises.
-            </div>
-            <div className="pt-6 md:pt-10">
-              We Deliver. Period.
+              Let&apos;s experiment together!   
             </div>
           </div>
         )}
@@ -41,18 +37,18 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
               VISIT US
             </p>
             <p className="font-semibold">
-              100 Sutherland Road,
+              130 Sutherland Road,
             </p>
             <p className="font-semibold">
               Boston, MA 02135
             </p>
           </div>
-          <div className=" flex justify-start lg:justify-end items-center">
+          <div className=" flex justify-start lg:justify-center items-center">
             <div className="w-fit flex flex-col justify-start items-start">
               <p>
                 FOLLOW US
               </p>
-              <div className="flex gap-2 md:justify-start lg:justify-end">
+              <div className="flex gap-2 md:justify-start lg:justify-center">
                 <div className="flex h-[37px] w-[110px] items-center justify-center rounded-[10px] bg-black">
                   <p className="font-rebond text-[14px] leading-normal font-medium text-[#2AFFAA] not-italic">
                     INSTAGRAM
