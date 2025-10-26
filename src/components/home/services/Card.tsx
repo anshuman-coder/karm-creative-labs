@@ -9,9 +9,10 @@ interface ServiceCardProps {
   description: string;
   features: string[];
   className?: string;
+  imageSrc: string;
 }
 
-const Card: FC<ServiceCardProps> = ({ number, title, description, features, className = '' }) => {
+const Card: FC<ServiceCardProps> = ({ number, title, description, features, className = '', imageSrc }) => {
   const breakpoint = useBreakpoint()
   return (
     <article className={clsx(
@@ -60,7 +61,7 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
             {breakpoint.current === 'md' && (
               <div className='relative w-[132px] h-[132px] flex-shrink-0 overflow-hidden rounded-3xl bg-gray-200'>
                 <Image
-                  src="/service-image.png"
+                  src={imageSrc}
                   alt={title}
                   fill
                   className='object-cover'
@@ -73,7 +74,7 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
         {breakpoint.isAndAbove('lg', (
           <div className='relative aspect-square w-[400px] laptop:w-[488px] overflow-hidden rounded-3xl bg-gray-200'>
             <Image
-              src="/service-image.png"
+              src={imageSrc}
               alt={title}
               fill
               className='object-cover'

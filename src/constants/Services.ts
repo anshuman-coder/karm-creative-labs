@@ -1,4 +1,4 @@
-export const ServicesListing = [
+export const ServicesListing: Array<{ number: string; title: string; description: string; features: string[]; imageSrc: string }> = [
   {
     number: "01",
     title: "Logo & Branding",
@@ -11,6 +11,7 @@ export const ServicesListing = [
       "Collateral, Packaging & Merch",
       "Visual Language & Art Direction",
     ],
+    imageSrc: "/temp/service_1.png",
   },
   {
     number: "02",
@@ -25,6 +26,7 @@ export const ServicesListing = [
       "Paid Social, Influencer Ad",
       "Analytics, Insights & Optimization",
     ],
+    imageSrc: "/temp/service_2.png",
   },
   {
     number: "03",
@@ -39,6 +41,7 @@ export const ServicesListing = [
       "Prototyping, Testing & Dev-to",
       "Frameworks",
     ],
+    imageSrc: "/temp/service_3.png",
   },
   {
     number: "04",
@@ -53,6 +56,7 @@ export const ServicesListing = [
       "Illustration (Editorial, Infographics, Product, Commissioned Art)",
       "Copywriting, Scripting & Script Collateral",
     ],
+    imageSrc: "/temp/service_4.png",
   },
   {
     number: "05",
@@ -69,5 +73,6 @@ export const ServicesListing = [
       "A/B Testing & Reporting",
       "Influencer & Affiliate Optimization",
     ],
+    imageSrc: "/temp/service_5.png",
   },
 ];
