@@ -33,7 +33,7 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
           {breakpoint.isAndBelow('sm', (
             <div className='relative aspect-square w-full overflow-hidden rounded-3xl bg-gray-200'>
               <Image
-                src="/service-image.png"
+                src={imageSrc}
                 alt={title}
                 fill
                 className='object-cover'
