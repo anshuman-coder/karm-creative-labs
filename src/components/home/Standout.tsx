@@ -9,7 +9,7 @@ const Standout: FC<StandoutProps> = ({ className = "" }) => {
   return (
     <div
       className={clsx(
-        "flex w-full flex-col justify-between px-5 md:px-8 lg:px-12 max-w-[1280px]",
+        "flex w-full flex-col justify-between px-5 md:px-8 lg:px-12 max-w-[1500px]",
         className,
       )}
     >
