@@ -7,8 +7,8 @@ import { NavMenuItems } from "~/constants/NavItems";
 import useBreakpoint from "~/hooks/useBreakpoint";
 import { Transition } from "@headlessui/react";
 
-const SCROLL_DOWN_DELAY = 900; // Hide header after 900ms of scrolling down
-const SCROLL_UP_DELAY = 500; // Show header after 500ms of scrolling up
+const SCROLL_DOWN_DELAY = 200; // Hide header after 900ms of scrolling down
+const SCROLL_UP_DELAY = 200; // Show header after 500ms of scrolling up
 
 
 const Header = () => {
@@ -128,7 +128,7 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "fixed top-0 right-0 left-0 z-50 w-full p-2 sm:p-8 md:pt-8 md:pb-4 xl:pt-10 transition-transform duration-500 ease-in-out bg-bg-neutral-white/90 shadow-xl",
+        "fixed top-0 right-0 left-0 z-50 w-full p-2 sm:p-8 md:pt-8 md:pb-4 transition-transform duration-500 ease-in-out bg-white",
         isMenuOpen ? "bg-white/100 backdrop-blur-lg" : "bg-bg-neutral-white/90 backdrop-blur-md",
         isHeaderVisible ? "translate-y-0" : "-translate-y-full"
       )}
