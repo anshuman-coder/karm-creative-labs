@@ -22,7 +22,7 @@ export default function Home() {
       <MaxHeightWrapper id="services" className="mt-16 sm:!mt-10 md:!mt-16 justify-center items-center !min-h-auto">
         <Standout />
       </MaxHeightWrapper>
-      <MaxHeightWrapper>
+      <MaxHeightWrapper className="items-center">
         <Services />
       </MaxHeightWrapper>
       <MaxHeightWrapper id="testimonials" className="!min-h-auto justify-center items-center bg-black !m-0">

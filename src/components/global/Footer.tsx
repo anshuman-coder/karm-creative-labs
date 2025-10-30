@@ -12,7 +12,7 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
 
   return (
     <footer className="flex justify-center items-center bg-bg-header-sm p-4 text-black md:px-6 md:py-12 w-full" {...props}>
-      <div className="w-full md:px-10">
+      <div className="w-full max-w-[1500px] md:px-10">
         {(forPage === 'home' || breakpoint.current === 'md') && (
           <div className="text-4xl md:text-5xl xl:text-[80px] font-rebond font-semibold text-black leading-normal not-italic mb-8">
             <div className="text-wrap text-left">
