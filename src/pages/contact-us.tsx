@@ -4,6 +4,7 @@ import Banner from "~/components/contact-us/Banner";
 import Footer from "~/components/global/Footer";
 import PageHelmet from "~/components/global/PageHelmet";
 import Header from "~/components/global/Header";
+import { FollowUpLinks } from "~/constants/followUps";
 
 // --- HELPER COMPONENTS ---
 
@@ -99,20 +100,14 @@ const ContactForm = () => {
                 Follow
               </h3>
               <ul className="space-y-1">
-                {[
-                  "Facebook",
-                  "Twitter",
-                  "LinkedIn",
-                  "Instagram",
-                  "Dribbble",
-                  "Behance",
-                ].map((link) => (
-                  <li key={link}>
+                {Object.entries(FollowUpLinks).filter(([_, value]) => value.url).map(([_, value]) => (
+                  <li key={value.displayName}>
                     <a
-                      href="#"
+                      href={value.url}
                       className="font-rebond text-[20px] leading-normal font-semibold text-white not-italic"
+                      target="_blank"
                     >
-                      {link}
+                      {value.displayName}
                     </a>
                   </li>
                 ))}

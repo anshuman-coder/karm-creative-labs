@@ -1,4 +1,4 @@
-export const ServicesListing: Array<{ number: string; title: string; description: string; features: string[]; imageSrc: string }> = [
+export const ServicesListing: Array<{ number: string; title: string; description: string; features: string[]; source: string }> = [
   {
     number: "01",
     title: "Logo & Branding",
@@ -11,7 +11,7 @@ export const ServicesListing: Array<{ number: string; title: string; description
       "Collateral, Packaging & Merch",
       "Visual Language & Art Direction",
     ],
-    imageSrc: "/temp/service_1.png",
+    source: "/videos/logo-presentation.mp4",
   },
   {
     number: "02",
@@ -22,11 +22,10 @@ export const ServicesListing: Array<{ number: string; title: string; description
       "Social Strategy & Community Planning",
       "Visual Design & Content",
       "Platform & Channel Management",
-      "Engagement",
       "Paid Social, Influencer Ad",
       "Analytics, Insights & Optimization",
     ],
-    imageSrc: "/temp/service_2.png",
+    source: "/videos/social-presentation.mp4",
   },
   {
     number: "03",
@@ -39,9 +38,8 @@ export const ServicesListing: Array<{ number: string; title: string; description
       "Front-End & Back-End Development",
       "CMS Integration & E-Commerce",
       "Prototyping, Testing & Dev-to",
-      "Frameworks",
     ],
-    imageSrc: "/temp/service_3.png",
+    source: "/videos/web-presentation.mp4",
   },
   {
     number: "04",
@@ -49,14 +47,13 @@ export const ServicesListing: Array<{ number: string; title: string; description
     description:
       "Design should feel as good as it looks. We create emotionally resonant experiences that makes every interaction memorable and build trust or mediums.",
     features: [
-      "Motion Graphics (2D/3D)",
-      "Animation, Character Videos, Logo",
-      "Video Editing, Post-Production",
-      "Sound Design, Voice Overs (Brand Assets, Animation)",
-      "Illustration (Editorial, Infographics, Product, Commissioned Art)",
-      "Copywriting, Scripting & Script Collateral",
+      "Motion Graphics & Animations",
+      "Video Production & Editing",
+      "Audio & Voice sets",
+      "Illustrations & Visual Design",
+      "Creative Copy & Scripting",
     ],
-    imageSrc: "/temp/service_4.png",
+    source: "/videos/creative-presentation.mp4",
   },
   {
     number: "05",
@@ -67,12 +64,9 @@ export const ServicesListing: Array<{ number: string; title: string; description
       "Paid Advertising (Google, Meta, LinkedIn)",
       "SEO & Content Optimization",
       "Email, Funnels & Conversion",
-      "Attribution Modeling",
       "Retargeting & Remarketing",
-      "Analytics",
-      "A/B Testing & Reporting",
-      "Influencer & Affiliate Optimization",
+      "Marketing Analytics & Reporting",
     ],
-    imageSrc: "/temp/service_5.png",
+    source: "/videos/performance-presentation.mp4",
   },
 ];

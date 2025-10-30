@@ -23,7 +23,7 @@ const Services: FC<ServicesProps> = ({ className = "" }) => {
             title={service.title}
             description={service.description}
             features={service.features}
-            imageSrc={service.imageSrc}
+            source={service.source}
           />
         ))}
       </div>

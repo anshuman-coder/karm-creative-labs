@@ -24,10 +24,10 @@ const Clients: FC<ClientsProps> = ({ className = "" }) => {
           Clients Who <br /> Push Boundaries
         </h2>
         <div className="w-full flex flex-col sm:flex-row justify-between sm:justify-center md:justify-start lg:justify-end items-start md:items-center gap-6 md:gap-12">
-          <p className="font-rebond text-sm leading-[1.4] text-white font-semibold max-w-[278px]">
+          <p className="font-rebond text-sm leading-[1.4] text-white font-normal max-w-[278px]">
             We’ve had the privilege of collaborating with brands of every scale, from bold, ambitious startups to established global enterprises. Each partnership brings a new challenge, a fresh story, and an opportunity to create something meaningful.
           </p>
-          <p className="font-rebond text-sm leading-[1.4] text-white font-semibold max-w-[278px]">
+          <p className="font-rebond text-sm leading-[1.4] text-white font-normal max-w-[278px]">
             Every project is more than just work; it’s a shared journey. We take pride in the impact we’ve made together and the ideas we’ve brought to life
           </p>
         </div>

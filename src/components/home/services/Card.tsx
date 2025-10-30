@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Image from 'next/image';
 import React, { type FC } from 'react'
 import useBreakpoint from '~/hooks/useBreakpoint';
 
@@ -9,10 +8,10 @@ interface ServiceCardProps {
   description: string;
   features: string[];
   className?: string;
-  imageSrc: string;
+  source: string;
 }
 
-const Card: FC<ServiceCardProps> = ({ number, title, description, features, className = '', imageSrc }) => {
+const Card: FC<ServiceCardProps> = ({ number, title, description, features, className = '', source }) => {
   const breakpoint = useBreakpoint()
   return (
     <article className={clsx(
@@ -32,11 +31,14 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
           <h3 className='text-3xl xl:text-7xl font-semibold leading-[1.1]'>{title}</h3>
           {breakpoint.isAndBelow('sm', (
             <div className='relative aspect-square w-full overflow-hidden rounded-3xl bg-gray-200'>
-              <Image
-                src={imageSrc}
-                alt={title}
-                fill
-                className='object-cover'
+              <video
+                src={source}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className='w-full h-full object-cover'
               />
             </div>
           ))}
@@ -46,7 +48,7 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
               <p className='text-left font-medium text-xl md:text-sm xl:text-lg laptop:text-2xl leading-[1.5] text-wrap md:max-w-[280px] lg:max-w-[320px]'>
                 {description}
               </p>
-              <ul className='space-y-2 font-semibold xl:font-bold'>
+              <ul className='space-y-2 font-semibold'>
                 {features.map((feature, index) => (
                   <li
                     key={index}
@@ -60,24 +62,30 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
             </div>
             {breakpoint.current === 'md' && (
               <div className='relative w-[132px] h-[132px] flex-shrink-0 overflow-hidden rounded-3xl bg-gray-200'>
-                <Image
-                  src={imageSrc}
-                  alt={title}
-                  fill
-                  className='object-cover'
+                <video
+                  src={source}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className='w-full h-full object-cover'
                 />
               </div>
             )}
           </div>
         </div>
-        {/* image for desktop */}
+        {/* video for desktop */}
         {breakpoint.isAndAbove('lg', (
           <div className='relative aspect-square w-[400px] laptop:w-[488px] overflow-hidden rounded-3xl bg-gray-200'>
-            <Image
-              src={imageSrc}
-              alt={title}
-              fill
-              className='object-cover'
+            <video
+              src={source}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className='w-full h-full object-cover'
             />
           </div>
         ))}
