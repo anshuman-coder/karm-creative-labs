@@ -1,5 +1,5 @@
 import { Transition } from "@headlessui/react";
-// import Image from "next/image";
+import Image from "next/image";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import useBreakpoint from "~/hooks/useBreakpoint";
 import Button from "../global/Button";
@@ -33,7 +33,7 @@ const Hero = () => {
             <span className="font-times font-bold italic">inspire,</span>
           </p>
           {/* here will be the image for mobile view */}
-          {/* {breakpoint.isAndBelow(
+          {breakpoint.isAndBelow(
             "sm",
             <div className="relative m-1 flex w-full flex-1 items-center justify-center p-4 sm:p-2">
               <Image
@@ -43,7 +43,7 @@ const Hero = () => {
                 className="rounded-2xl object-fill shadow-lg"
               />
             </div>,
-          )} */}
+          )}
           <p className="px-[60px]">
             designs {breakpoint.isAndBelow('sm', <br />)} that{" "}
             <span className="font-times font-bold italic">engage.</span>
