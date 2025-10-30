@@ -5,22 +5,22 @@ export const NavMenuItems: Array<{
 }> = [
   {
     label: "Home",
-    url: "#hero",
+    url: "/#hero",
     key: "home",
   },
   {
     label: "About",
-    url: "#about",
+    url: "/#about",
     key: "about",
   },
   {
     label: "Services",
-    url: "#services",
+    url: "/#services",
     key: "services",
   },
   {
     label: "Testimonials",
-    url: "#testimonials",
+    url: "/#testimonials",
     key: "testimonials",
   },
   // for phase 2

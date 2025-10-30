@@ -68,6 +68,7 @@ const Header = () => {
         if (direction === 'down') {
           scrollTimer.current = setTimeout(() => {
             setIsHeaderVisible(false);
+            setisMenuOpen(false);
           }, SCROLL_DOWN_DELAY);
         } else if (direction === 'up') {
           scrollTimer.current = setTimeout(() => {
@@ -127,12 +128,10 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "fixed top-0 right-0 left-0 z-50 w-full backdrop-blur-2xl p-2 sm:p-8 md:pt-8 md:pb-4 xl:pt-10 transition-transform duration-500 ease-in-out",
+        "fixed top-0 right-0 left-0 z-50 w-full p-2 sm:p-8 md:pt-8 md:pb-4 xl:pt-10 transition-transform duration-500 ease-in-out bg-bg-neutral-white/90 shadow-xl",
+        isMenuOpen ? "bg-white/100 backdrop-blur-lg" : "bg-bg-neutral-white/90 backdrop-blur-md",
         isHeaderVisible ? "translate-y-0" : "-translate-y-full"
       )}
-      style={{
-        background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 70%, rgba(255, 255, 255, 0.1) 100%)'
-      }}
     >
       <div
         className={clsx(
@@ -244,7 +243,7 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
     >
       <Logo className="w-16 h-8 xl:w-[157px] xl:h-[61px] 2xl:w-[225px] 2xl:h-[87px]" />
       <div className="bg-brand-text font-rebond absolute top-1/2 left-1/2 sm:-translate-x-2/5 md:-translate-x-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full text-lg font-semibold text-white">
-        <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 shadow-2xl lg:gap-x-4">
+        <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 lg:gap-x-4">
           {NavMenuItems.map((item) => (
             <a
               key={item.key}

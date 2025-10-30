@@ -3,6 +3,7 @@ import Hero from "~/components/contact-us/Hero";
 import Banner from "~/components/contact-us/Banner";
 import Footer from "~/components/global/Footer";
 import PageHelmet from "~/components/global/PageHelmet";
+import Header from "~/components/global/Header";
 
 // --- HELPER COMPONENTS ---
 
@@ -148,6 +149,7 @@ export default function ContactUs() {
     <>
       <PageHelmet title="Let's talk" />
       <main className="bg-black">
+        <Header />
         <Hero />
         <Banner />
         <ContactForm />
