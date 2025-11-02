@@ -1,3 +1,4 @@
+@import url(https://db.onlinewebfonts.com/c/0dceee6a0d517b74ca0d3fe8e3373315?family=ES+Rebond+Grotesque+TRIAL);
 @import "tailwindcss";
 
 html {
@@ -12,7 +13,7 @@ html {
   --color-bg-header-sm: #2AFFAA;
 
   /* font family */
-  --font-rebond: var(--font-esrebond), ui-sans-serif, system-ui, sans-serif;
+  --font-rebond: "ES Rebond Grotesque TRIAL", ui-sans-serif, system-ui, sans-serif;
   --font-times: "Times New Roman", Times, serif;
   --font-mono: var(--font-dmmono), monospace;
 

@@ -1,7 +1,7 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
-import { esRebond, dmMono } from "~/styles/fonts";
+import { dmMono } from "~/styles/fonts";
 
 import { api } from "~/utils/api";
 
@@ -16,7 +16,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <SessionProvider session={session}>
       <GetBreakpoints />
       <div
-        className={`${esRebond.variable} ${dmMono.variable} bg-white font-sans`}
+        className={`${dmMono.variable} bg-white font-sans`}
       >
         <Component {...pageProps} />
       </div>
