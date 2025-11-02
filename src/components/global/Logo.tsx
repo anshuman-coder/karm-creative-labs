@@ -1,14 +1,16 @@
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import React, { type FC } from "react";
 
 interface LogoProps {
   className?: string;
+  href?: string;
 }
-const Logo: FC<LogoProps> = ({ className = "" }) => {
+const Logo: FC<LogoProps> = ({ className = "", href = "/" }) => {
   return (
-    <div className={clsx(
-      "relative flex items-center justify-center p-1",
+    <Link href={href} className={clsx(
+      "relative flex items-center justify-center p-1 cursor-pointer",
       className,
     )}>
       <Image
@@ -17,7 +19,7 @@ const Logo: FC<LogoProps> = ({ className = "" }) => {
         fill
         className="object-fill"
       />
-    </div>
+    </Link>
   );
 };
 

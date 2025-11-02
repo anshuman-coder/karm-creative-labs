@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type FC } from "react";
+import React, { useCallback, useEffect, useState, type FC } from "react";
 import Logo from "./Logo";
 import Button from "~/components/global/Button";
 import { Plus } from "lucide-react";
@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { NavMenuItems } from "~/constants/NavItems";
 import useBreakpoint from "~/hooks/useBreakpoint";
 import { Transition } from "@headlessui/react";
+import { useRouter } from "next/router";
 
 const SCROLL_DOWN_DELAY = 200; // Hide header after 900ms of scrolling down
 const SCROLL_UP_DELAY = 200; // Show header after 500ms of scrolling up
@@ -168,12 +169,18 @@ const MobileHeader: FC<MobileHeaderProps> = ({
   handleMenuOpen,
   handleNavClick,
 }) => {
+  const router = useRouter()
+
+  const letsTalkClick = useCallback(() => {
+    void router.push('/contact-us')
+  }, [router])
+
   return (
     <>
       <div className="flex w-full items-center justify-between px-1.5 py-3 md:px-6 md:py-4">
         <Logo className="w-20 h-9" />
         <div className="flex items-center justify-center gap-2">
-          <Button label="LET'S TALK" className="sm:py-5" />
+          <Button label="LET'S TALK" className="sm:py-5" onClick={letsTalkClick} />
           <Button
             iconBtn
             icon={
