@@ -48,7 +48,7 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
               <p className='text-left font-medium text-xl md:text-sm xl:text-lg laptop:text-2xl leading-[1.5] text-wrap md:max-w-[280px] lg:max-w-[320px]'>
                 {description}
               </p>
-              <ul className='space-y-2 font-semibold'>
+              <ul className='space-y-2 font-bold'>
                 {features.map((feature, index) => (
                   <li
                     key={index}
