@@ -45,10 +45,10 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
           <div className='w-full flex flex-col md:flex-row justify-center md:justify-between items-start gap-3'>
             {/* description */}
             <div className='flex flex-col md:flex-row justify-center md:justify-between items-start gap-3 lg:gap-20'>
-              <p className='text-left font-medium text-xl md:text-sm xl:text-lg laptop:text-2xl leading-[1.5] text-wrap md:max-w-[280px] lg:max-w-[320px]'>
+              <p className='text-left font-semibold text-xl md:text-sm xl:text-lg laptop:text-2xl leading-[1.5] text-wrap md:max-w-[280px] lg:max-w-[320px]'>
                 {description}
               </p>
-              <ul className='space-y-2 font-semibold'>
+              <ul className='space-y-2 font-medium'>
                 {features.map((feature, index) => (
                   <li
                     key={index}

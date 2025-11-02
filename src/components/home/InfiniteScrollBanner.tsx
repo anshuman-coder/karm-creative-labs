@@ -104,7 +104,7 @@ const InfiniteScrollBanner = () => {
           {services.map((service, index) => (
             <span
               key={index}
-              className="text-text-banner font-rebond text-xl md:text-sm laptop:text-3xl font-semibold whitespace-nowrap px-2"
+              className="text-text-banner font-rebond text-xl md:text-sm laptop:text-3xl font-normal whitespace-nowrap px-2"
             >
               {service} •
             </span>

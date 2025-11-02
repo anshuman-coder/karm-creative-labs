@@ -17,7 +17,7 @@ const Standout: FC<StandoutProps> = ({ className = "" }) => {
         <h2 className="font-rebond mb-7 text-4xl md:text-5xl xl:text-8xl text-brand-text font-semibold max-w-4xl">
           Standout Services That Shape Ideas Into Impact.
         </h2>
-        <p className="max-w-[253px] font-rebond font-medium md:font-semibold text-xl md:text-lg xl:text-2xl leading-[1.4] text-brand-text pt-0 md:pt-3">
+        <p className="max-w-[253px] font-rebond font-normal text-xl md:text-lg xl:text-2xl leading-[1.4] text-brand-text pt-0 md:pt-3">
           From design to launch, we craft solutions that drive growth.
         </p>
       </div>
