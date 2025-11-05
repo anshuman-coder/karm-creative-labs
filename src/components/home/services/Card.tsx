@@ -18,7 +18,7 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
       'w-full flex flex-col justify-start items-center',
       'border-t border-solid border-brand-text',
       'pt-4 md:pt-6 lg:pt-8 gap-3',
-      'font-rebond text-brand-text',
+      'font-mono text-brand-text',
       className,
     )}>
       {/* serial number */}
@@ -45,14 +45,14 @@ const Card: FC<ServiceCardProps> = ({ number, title, description, features, clas
           <div className='w-full flex flex-col md:flex-row justify-center md:justify-between items-start gap-3'>
             {/* description */}
             <div className='flex flex-col md:flex-row justify-center md:justify-between items-start gap-3 lg:gap-20'>
-              <p className='text-left font-medium text-xl md:text-sm xl:text-lg laptop:text-2xl leading-[1.5] text-wrap md:max-w-[280px] lg:max-w-[320px]'>
+              <p className='text-left font-normal text-xl md:text-sm xl:text-lg laptop:text-2xl leading-[1.5] text-wrap md:max-w-[280px] lg:max-w-[320px]'>
                 {description}
               </p>
               <ul className='space-y-2 font-bold'>
                 {features.map((feature, index) => (
                   <li
                     key={index}
-                    className="font-rebond flex items-start text-sm md:text-xs xl:text-lg laptop:text-xl text-brand-text"
+                    className="font-mono flex items-start text-sm md:text-xs xl:text-lg laptop:text-xl text-brand-text"
                   >
                     <span className="mr-1 md:mr-2">•</span>
                     <span>{feature}</span>

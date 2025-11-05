@@ -25,7 +25,7 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
             </div>
           </div>
         )}
-        <div className="md:grid-cols grid gap-10 md:gap-8 lg:grid-cols-3 lg:gap-4 pt-3 font-rebond text-lg md:text-3xl xl:text-lg leading-normal font-light text-black not-italic">
+        <div className="md:grid-cols grid gap-10 md:gap-8 lg:grid-cols-3 lg:gap-4 pt-3 font-mono text-lg md:text-3xl xl:text-lg leading-normal font-light text-black not-italic">
           <div className="flex justify-start lg:justify-center items-center">
             <div className="text-left md:text-left">
               <p>
@@ -99,7 +99,7 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
               Privacy Policy
             </a>
           </p>
-          <p className="font-rebond text-[7px] leading-[100%] font-medium tracking-[0] md:text-[20px] lg:text-[20px]">
+          <p className="font-mono text-[7px] leading-[100%] font-medium tracking-[0] md:text-[20px] lg:text-[20px]">
             &copy; karmlabs 2025. All Rights Reserved.
           </p>
         </div>

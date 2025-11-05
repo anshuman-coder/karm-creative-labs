@@ -66,12 +66,12 @@ const ContactForm = () => {
       <div className="container mx-auto md:p-10">
         <div className="grid grid-cols-12 gap-1 md:gap-8 lg:gap-4">
           <div className="col-span-12 lg:col-span-2">
-            <p className="font-rebond text-[15px] leading-normal font-semibold text-white not-italic">
+            <p className="font-mono text-[15px] leading-normal font-semibold text-white not-italic">
               Contact
             </p>
           </div>
           <div className="col-span-12 lg:col-span-10">
-            <h2 className="font-rebond text-[30px] leading-normal font-semibold text-white not-italic md:text-[38px] md:leading-[80px] lg:text-[112px] lg:leading-[112px]">
+            <h2 className="font-mono text-[30px] leading-normal font-semibold text-white not-italic md:text-[38px] md:leading-[80px] lg:text-[112px] lg:leading-[112px]">
               Let&apos;s drop us a line and get the project started.
             </h2>
           </div>
@@ -81,10 +81,10 @@ const ContactForm = () => {
           {/* Left Side: Info */}
           <div className="space-y-10 lg:col-span-1">
             <div>
-              <h3 className="font-rebond text-[20px] leading-normal font-semibold text-white not-italic">
+              <h3 className="font-mono text-[20px] leading-normal font-semibold text-white not-italic">
                 Get in touch
               </h3>
-              <p className="font-rebond text-[30px] leading-normal font-semibold text-white not-italic">
+              <p className="font-mono text-[30px] leading-normal font-semibold text-white not-italic">
                 We&apos;re excited to hear from you and let&apos;s start
                 something amazing together.
               </p>
@@ -96,7 +96,7 @@ const ContactForm = () => {
               </a>
             </div>
             <div>
-              <h3 className="font-rebond text-[20px] leading-normal font-semibold text-white not-italic md:text-[18px] lg:text-[20px]">
+              <h3 className="font-mono text-[20px] leading-normal font-semibold text-white not-italic md:text-[18px] lg:text-[20px]">
                 Follow
               </h3>
               <ul className="space-y-1">
@@ -104,7 +104,7 @@ const ContactForm = () => {
                   <li key={value.displayName}>
                     <a
                       href={value.url}
-                      className="font-rebond text-[20px] leading-normal font-semibold text-white not-italic"
+                      className="font-mono text-[20px] leading-normal font-semibold text-white not-italic"
                       target="_blank"
                     >
                       {value.displayName}
