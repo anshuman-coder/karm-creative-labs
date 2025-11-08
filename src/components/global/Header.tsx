@@ -218,7 +218,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({
                   transform: isMenuOpen ? "translateY(0)" : "translateY(-10px)",
                 }}
               >
-                <p className="font-rebond text-xl leading-9 font-semibold">
+                <p className="font-mono text-xl leading-9 font-semibold">
                   {item.label}
                 </p>
               </div>
@@ -279,7 +279,7 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
       <Logo className="w-16 h-8 xl:w-[157px] xl:h-[61px] 2xl:w-[225px] 2xl:h-[87px]" />
       <div
         ref={divRef}
-        className="bg-brand-text font-rebond absolute top-1/2 left-1/2 max-w-3xl rounded-full text-lg font-semibold text-white transition-transform duration-1000 ease-out"
+        className="bg-brand-text font-mono absolute top-1/2 left-1/2 max-w-3xl rounded-full text-lg font-semibold text-white transition-transform duration-1000 ease-out"
         style={{
           transform: `translate(-50%, -50%) translate(${translate.x}px, ${translate.y}px)`,
         }}
@@ -291,12 +291,17 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
             <a
               key={item.key}
               href={item.url}
-              className="no-underline"
+              className="no-underline group relative inline-block overflow-hidden cursor-pointer h-6"
               onClick={(e) => handleNavClick(e, item.url)}
             >
-              <p className="cursor-pointer">
-                {item.label}
-              </p>
+              <span className="block transition-transform duration-200 ease-in-out">
+                <p className="m-0 p-0 whitespace-nowrap duration-200 group-hover:-translate-y-full">
+                  {item.label}
+                </p>
+                <p className="m-0 p-0 whitespace-nowrap duration-200 group-hover:-translate-y-full">
+                  {item.label}
+                </p>
+              </span>
             </a>
           ))}
         </nav>

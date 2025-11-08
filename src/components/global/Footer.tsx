@@ -16,7 +16,7 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
     <footer className="flex justify-center items-center bg-bg-header-sm p-4 text-black md:px-6 md:py-12 w-full" {...props}>
       <div className="w-full max-w-[1500px]">
         {(forPage === 'home' || breakpoint.current === 'md') && (
-          <div className="text-4xl md:text-5xl xl:text-[80px] font-rebond font-semibold text-black not-italic mb-6">
+          <div className="text-4xl md:text-5xl xl:text-7xl font-mono font-semibold text-black not-italic mb-6">
             <div className="text-wrap text-left">
               From Bold Startups To Global Enterprises,
             </div>
