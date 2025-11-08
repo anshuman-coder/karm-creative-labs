@@ -236,9 +236,37 @@ interface DesktopHeaderProps {
 
 const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
   const [show, setShow] = useState(false);
+  const [translate, setTranslate] = useState({ x: 0, y: 0 });
+  const divRef = React.useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     setShow(true);
   }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+
+    const rect = divRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Calculate offset from center
+    const offsetX = e.clientX - centerX;
+    const offsetY = e.clientY - centerY;
+
+    // Scale down the translation for subtle effect (adjust multiplier as needed)
+    const scale = 0.15;
+    setTranslate({
+      x: offsetX * scale,
+      y: offsetY * scale,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    // Reset to original position
+    setTranslate({ x: 0, y: 0 });
+  };
+
   return (
     <Transition
       as="div"
@@ -249,7 +277,15 @@ const DesktopHeader: FC<DesktopHeaderProps> = ({ handleNavClick }) => {
       className="flex w-full items-center justify-start"
     >
       <Logo className="w-16 h-8 xl:w-[157px] xl:h-[61px] 2xl:w-[225px] 2xl:h-[87px]" />
-      <div className="bg-brand-text font-rebond absolute top-1/2 left-1/2 sm:-translate-x-2/5 md:-translate-x-1/2 max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-full text-lg font-semibold text-white">
+      <div
+        ref={divRef}
+        className="bg-brand-text font-rebond absolute top-1/2 left-1/2 max-w-3xl rounded-full text-lg font-semibold text-white transition-transform duration-1000 ease-out"
+        style={{
+          transform: `translate(-50%, -50%) translate(${translate.x}px, ${translate.y}px)`,
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         <nav className="md: laptop:gap-x-10 flex w-full items-center justify-between gap-x-6 rounded-full px-7 py-4 lg:gap-x-4">
           {NavMenuItems.map((item) => (
             <a
