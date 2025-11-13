@@ -1,6 +1,5 @@
 import React from "react";
 import Hero from "~/components/contact-us/Hero";
-import Banner from "~/components/contact-us/Banner";
 import Footer from "~/components/global/Footer";
 import PageHelmet from "~/components/global/PageHelmet";
 import Header from "~/components/global/Header";
@@ -62,7 +61,7 @@ const FormInput = ({
 
 const ContactForm = () => {
   return (
-    <section className="bg-black p-5 text-white md:px-6 md:py-32 lg:py-20">
+    <section className="bg-black p-5 text-white md:px-6 md:py-32 lg:py-20 mt-16 sm:mt-32 md:mt-16">
       <div className="container mx-auto md:p-10">
         <div className="grid grid-cols-12 gap-1 md:gap-8 lg:gap-4">
           <div className="col-span-12 lg:col-span-2">
@@ -146,7 +145,6 @@ export default function ContactUs() {
       <main className="bg-black">
         <Header />
         <Hero />
-        <Banner />
         <ContactForm />
         <Footer forPage="contact" />
       </main>
