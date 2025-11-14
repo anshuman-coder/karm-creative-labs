@@ -15,8 +15,8 @@ const Services: FC<ServicesProps> = ({ className = "" }) => {
         className,
       )}
     >
-      <div className="flex flex-col gap-8 md:gap-12 lg:gap-16">
-        {ServicesListing.map((service) => (
+      <div className="flex flex-col">
+        {ServicesListing.map((service, index) => (
           <Card
             key={service.number}
             number={service.number}
@@ -24,6 +24,7 @@ const Services: FC<ServicesProps> = ({ className = "" }) => {
             description={service.description}
             features={service.features}
             source={service.source}
+            index={index}
           />
         ))}
       </div>

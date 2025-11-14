@@ -9,18 +9,27 @@ interface ServiceCardProps {
   features: string[];
   className?: string;
   source: string;
+  index: number;
 }
 
 const Card: FC<ServiceCardProps> = ({ number, title, description, features, className = '', source }) => {
   const breakpoint = useBreakpoint()
+  const topOffset = 0
+
   return (
-    <article className={clsx(
-      'w-full flex flex-col justify-start items-center',
-      'border-t border-solid border-brand-text',
-      'pt-4 md:pt-6 lg:pt-8 gap-3',
-      'font-mono text-brand-text',
-      className,
-    )}>
+    <article
+      className={clsx(
+        'w-full flex flex-col justify-start items-center',
+        'sticky bg-white',
+        'border-t border-solid border-brand-text',
+        'pt-4 md:pt-6 lg:pt-8 pb-8 md:pb-12 lg:pb-16 gap-3',
+        'font-mono text-brand-text',
+        className,
+      )}
+      style={{
+        top: `${topOffset}px`,
+      }}
+    >
       {/* serial number */}
       <div className='w-full flex justify-start items-center'>
         <p className='font-mono font-medium text-xl xl:text-3xl'>{number}</p>
