@@ -6,7 +6,9 @@ import { dmMono } from "~/styles/fonts";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import "lenis/dist/lenis.css";
 import GetBreakpoints from "~/context/GetBreakpoints";
+import LenisProvider from "~/context/LenisProvider";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -14,12 +16,14 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <GetBreakpoints />
-      <div
-        className={`${dmMono.variable} bg-white font-sans`}
-      >
-        <Component {...pageProps} />
-      </div>
+      <LenisProvider>
+        <GetBreakpoints />
+        <div
+          className={`${dmMono.variable} bg-white font-sans`}
+        >
+          <Component {...pageProps} />
+        </div>
+      </LenisProvider>
     </SessionProvider>
   );
 };

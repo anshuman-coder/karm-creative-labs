@@ -180,7 +180,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({
       <div className="flex w-full items-center justify-between px-1.5 py-3 md:px-6 md:py-4">
         <Logo className="w-20 h-9" />
         <div className="flex items-center justify-center gap-2">
-          <Button label="LET'S TALK" className="sm:py-5" onClick={letsTalkClick} />
+          <Button label="LET'S TALK" className="sm:py-5 !font-mono" onClick={letsTalkClick} />
           <Button
             iconBtn
             icon={
