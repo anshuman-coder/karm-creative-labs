@@ -37,8 +37,8 @@ const Hero = () => {
     if (window.innerWidth < 768) return;
 
     const now = Date.now();
-    // Reduced throttle to 100ms for smoother appearance
-    if (now - lastMouseMoveRef.current < 100) return;
+    // Throttle to 400ms - requires more mouse movement for next image
+    if (now - lastMouseMoveRef.current < 400) return;
     lastMouseMoveRef.current = now;
 
     if (!heroRef.current) return;
@@ -94,7 +94,7 @@ const Hero = () => {
         onMouseLeave={handleMouseLeave}
         className="text-brand-text font-mono laptop:text-8xl flex flex-1 flex-col items-center justify-between px-10 text-center text-3xl font-semibold md:justify-around md:text-6xl relative overflow-hidden">
         <div className="flex w-full flex-1 flex-col items-center justify-center md:flex-none">
-          <p className="px-3">
+          <p className="px-3 z-20">
             Crafting stories <br />that{" "}
             <span className="font-times font-bold italic">inspire,</span>
           </p>
@@ -113,12 +113,12 @@ const Hero = () => {
               />
             </div>,
           )}
-          <p className="px-[60px]">
+          <p className="px-[60px] z-20">
             designs {breakpoint.isAndBelow('sm', <br />)} that{" "}
             <span className="font-times font-bold italic">engage.</span>
           </p>
         </div>
-        {breakpoint.isAndAbove("md", <Button label="LET'S TALK" className="py-6 !font-mono" onClick={letsTalkClick} />)}
+        {breakpoint.isAndAbove("md", <Button label="LET'S TALK" className="py-6 !font-mono z-20" onClick={letsTalkClick} />)}
 
         {/* Hover Images - Desktop Only with Framer Motion */}
         <AnimatePresence>
@@ -132,9 +132,9 @@ const Hero = () => {
               }}
               initial={{
                 opacity: 0,
-                scale: 0.3,
-                rotate: -15,
-                filter: "blur(10px)",
+                scale: 1.8,
+                rotate: 8,
+                filter: "blur(12px)",
               }}
               animate={{
                 opacity: 1,
@@ -144,8 +144,8 @@ const Hero = () => {
               }}
               exit={{
                 opacity: 0,
-                scale: 0.8,
-                filter: "blur(15px)",
+                scale: 0.2,
+                filter: "blur(18px)",
                 transition: { duration: 0.8, ease: "easeOut" },
               }}
               transition={{
