@@ -21,7 +21,7 @@ const Hero = () => {
   const [hoverImages, setHoverImages] = useState<HoverImage[]>([]);
   const heroRef = useRef<HTMLDivElement>(null);
   const imageCounterRef = useRef(0);
-  const lastMouseMoveRef = useRef(0);
+  const lastPositionRef = useRef<{ x: number; y: number } | null>(null);
 
   const letsTalkClick = useCallback(() => {
     void router.push('/contact-us')
@@ -36,16 +36,25 @@ const Hero = () => {
     // Only for md and above (>= 768px)
     if (window.innerWidth < 768) return;
 
-    const now = Date.now();
-    // Throttle to 400ms - requires more mouse movement for next image
-    if (now - lastMouseMoveRef.current < 400) return;
-    lastMouseMoveRef.current = now;
-
     if (!heroRef.current) return;
 
     const rect = heroRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+
+    // Distance-based triggering to prevent too many images at same point
+    if (lastPositionRef.current) {
+      const distance = Math.sqrt(
+        Math.pow(x - lastPositionRef.current.x, 2) +
+        Math.pow(y - lastPositionRef.current.y, 2)
+      );
+
+      // Only create new image if mouse moved at least 180px from last position
+      if (distance < 280) return;
+    }
+
+    // Update last position
+    lastPositionRef.current = { x, y };
 
     // Random image from 1 to 23
     const randomImg = Math.floor(Math.random() * 23) + 1;
@@ -78,6 +87,8 @@ const Hero = () => {
   const handleMouseLeave = useCallback(() => {
     // Clear all images when mouse leaves
     setHoverImages([]);
+    // Reset last position
+    lastPositionRef.current = null;
   }, []);
 
   return (
@@ -132,7 +143,7 @@ const Hero = () => {
               }}
               initial={{
                 opacity: 0,
-                scale: 1.8,
+                scale: 2,
                 rotate: 8,
                 filter: "blur(12px)",
               }}
