@@ -11,7 +11,7 @@ import Footer from "~/components/global/Footer";
 export default function Home() {
   return (
     <>
-      <PageHelmet title="Home" />
+      <PageHelmet />
       <Header />
       <MaxHeightWrapper id="hero">
         <Hero />
