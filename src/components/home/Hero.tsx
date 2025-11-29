@@ -129,7 +129,7 @@ const Hero = () => {
             <span className="font-times font-bold italic">engage.</span>
           </p>
         </div>
-        {breakpoint.isAndAbove("md", <Button label="LET'S TALK" className="py-6 !font-mono z-20" onClick={letsTalkClick} />)}
+        {breakpoint.isAndAbove("md", <Button label="LET'S TALK" className="py-6 font-mono! z-20" onClick={letsTalkClick} />)}
 
         {/* Hover Images - Desktop Only with Framer Motion */}
         <AnimatePresence>
