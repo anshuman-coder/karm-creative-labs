@@ -19,6 +19,7 @@ const Hero = () => {
   const breakpoint = useBreakpoint();
   const [transitionshow, setTransitionshow] = useState(false);
   const [hoverImages, setHoverImages] = useState<HoverImage[]>([]);
+  const [recentImageNumbers, setRecentImageNumbers] = useState<number[]>([]);
   const heroRef = useRef<HTMLDivElement>(null);
   const imageCounterRef = useRef(0);
   const lastPositionRef = useRef<{ x: number; y: number } | null>(null);
@@ -56,8 +57,19 @@ const Hero = () => {
     // Update last position
     lastPositionRef.current = { x, y };
 
-    // Random image from 1 to 23
-    const randomImg = Math.floor(Math.random() * 23) + 1;
+    // Generate unique random image number (not in last 4 used)
+    let randomImg: number;
+    do {
+      randomImg = Math.floor(Math.random() * 23) + 1;
+    } while (recentImageNumbers.includes(randomImg));
+
+    // Update recent images queue
+    setRecentImageNumbers((prev) => {
+      const updated = [...prev, randomImg];
+      // Keep only last 4 numbers (FIFO queue behavior)
+      return updated.length > 4 ? updated.slice(-4) : updated;
+    });
+
     const imgSrc = `/hovering-imgs/exp_${randomImg}.png`;
 
     // Add some random offset variation for more natural feel
@@ -82,13 +94,15 @@ const Hero = () => {
     setTimeout(() => {
       setHoverImages((prev) => prev.filter((img) => img.id !== newImage.id));
     }, 1500);
-  }, []);
+  }, [recentImageNumbers]);
 
   const handleMouseLeave = useCallback(() => {
     // Clear all images when mouse leaves
     setHoverImages([]);
     // Reset last position
     lastPositionRef.current = null;
+    // Reset recent images queue
+    setRecentImageNumbers([]);
   }, []);
 
   return (
