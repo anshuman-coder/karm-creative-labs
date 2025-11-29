@@ -53,7 +53,13 @@ export const createTRPCContext = async ({
   res,
 }: CreateNextContextOptions) => {
   // Get the session from the server using the getServerSession wrapper function
-  const session = await auth(req, res);
+  let session = null;
+  try {
+    session = await auth(req, res);
+  } catch (error) {
+    // If auth fails, just set session to null (allows public procedures to work)
+    console.warn("Failed to get session:", error);
+  }
 
   return createInnerTRPCContext({
     session,

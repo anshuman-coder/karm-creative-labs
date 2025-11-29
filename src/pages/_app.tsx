@@ -7,6 +7,7 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import "lenis/dist/lenis.css";
+import "react-toastify/dist/ReactToastify.css";
 import GetBreakpoints from "~/context/GetBreakpoints";
 import LenisProvider from "~/context/LenisProvider";
 
