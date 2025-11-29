@@ -185,7 +185,7 @@ const ContactForm = () => {
             </p>
           </div>
           <div className="col-span-12 lg:col-span-10">
-            <h2 className="not-italic font-mono text-[30px] font-semibold leading-normal text-white md:text-[38px] md:leading-[80px] lg:text-[112px] lg:leading-[112px]">
+            <h2 className="not-italic font-mono text-[30px] font-semibold leading-normal text-white md:text-[38px] md:leading-20 lg:text-[112px] lg:leading-28">
               Let&apos;s drop us a line and get the project started.
             </h2>
           </div>
