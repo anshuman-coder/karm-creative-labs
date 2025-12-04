@@ -23,10 +23,33 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const imageCounterRef = useRef(0);
   const lastPositionRef = useRef<{ x: number; y: number } | null>(null);
+  const [imagesPreloaded, setImagesPreloaded] = useState(false);
 
   const letsTalkClick = useCallback(() => {
     void router.push('/contact-us')
   }, [router])
+
+  // Preload all hovering images
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises: Promise<void>[] = [];
+
+      for (let i = 1; i <= 23; i++) {
+        const promise = new Promise<void>((resolve) => {
+          const img = new window.Image();
+          img.src = `/hovering-imgs/exp_${i}.png`;
+          img.onload = () => resolve();
+          img.onerror = () => resolve(); // Resolve even on error to not block
+        });
+        imagePromises.push(promise);
+      }
+
+      await Promise.all(imagePromises);
+      setImagesPreloaded(true);
+    };
+
+    void preloadImages();
+  }, []);
 
   useEffect(() => {
     setTransitionshow(true);
@@ -36,6 +59,9 @@ const Hero = () => {
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     // Only for md and above (>= 768px)
     if (window.innerWidth < 768) return;
+
+    // Wait for images to be preloaded before allowing hover effect
+    if (!imagesPreloaded) return;
 
     if (!heroRef.current) return;
 
@@ -94,7 +120,7 @@ const Hero = () => {
     setTimeout(() => {
       setHoverImages((prev) => prev.filter((img) => img.id !== newImage.id));
     }, 1500);
-  }, [recentImageNumbers]);
+  }, [recentImageNumbers, imagesPreloaded]);
 
   const handleMouseLeave = useCallback(() => {
     // Clear all images when mouse leaves
@@ -187,7 +213,7 @@ const Hero = () => {
                 height={250}
                 className="rounded-xl object-cover shadow-2xl select-none"
                 draggable={false}
-                priority={false}
+                unoptimized
               />
             </motion.div>
           ))}
