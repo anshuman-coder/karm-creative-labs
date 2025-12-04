@@ -13,7 +13,7 @@ const MaxHeightWrapper: FC<MaxHeightWrapperProps> = ({
   return (
     <section
       className={clsx(
-        "mt-20 flex min-h-[calc(100vh-84px)] w-full flex-col sm:mt-36 md:min-h-[calc(100vh-140px)]",
+        "mt-20 flex min-h-[calc(100vh-84px)] w-full flex-col sm:mt-36 lg:mt-20 laptop:mt-26 md:min-h-[calc(100vh-140px)]",
         className,
       )}
       {...props}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useBreakpoint } from "~/hooks/useBreakpoint";
 import { FollowUpLinks } from "~/constants/followUps";
 import clsx from "clsx";
+import { FaInstagram, FaLinkedin } from "react-icons/fa6";
 
 interface FooterProps extends React.HTMLAttributes<HTMLElement> {
   forPage: 'home' | 'contact'
@@ -59,23 +60,12 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
               </p>
               <div className="flex gap-2 md:justify-start lg:justify-center items-center">
                 <SocialIcon url={FollowUpLinks.instagram.url}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-instagram-icon lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                  <FaInstagram size={24} />
                 </SocialIcon>
 
                 <SocialIcon url={FollowUpLinks.linkedin.url} >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-linkedin-icon lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  <FaLinkedin size={24} />
                 </SocialIcon>
-                {/* <SocialIcon>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05S0 3.603 0 8.049c0 4.142 3.268 7.58 7.437 7.994.545.1.732-.236.732-.524v-1.84c-3.14.682-3.8-1.524-3.8-1.524-.495-1.258-1.2-1.593-1.2-1.593-.986-.674.074-.66.074-.66 1.09.076 1.666 1.11 1.666 1.11.97 1.666 2.543 1.183 3.16.903.1-.7.378-1.183.682-1.457-2.41-.274-4.943-1.207-4.943-5.36 0-1.183.422-2.15 1.11-2.906-.11-.274-.48-1.37.104-2.863 0 0 .91-.29 2.986 1.11a10.3 10.3 0 0 1 2.712-.363c.91.003 1.83.123 2.712.363 2.076-1.4 2.984-1.11 2.984-1.11.586 1.493.216 2.589.106 2.863.69.756 1.11 1.723 1.11 2.906 0 4.163-2.535 5.08-4.955 5.35.39.336.732.997.732 2.01v2.983c0 .29.186.628.738.524C12.732 15.626 16 12.187 16 8.049z" />
-                  </svg>
-                </SocialIcon> */}
               </div>
             </div>
           </div>
@@ -93,8 +83,9 @@ const Footer: FC<FooterProps> = ({ forPage = 'contact', ...props }) => {
         <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
           <p>
             <a
-              href="#"
+              href="/privacy-policy"
               className="text-[7px] leading-[100%] font-medium tracking-[0] hover:underline md:text-[20px] lg:text-[20px]"
+              target="_blank"
             >
               Privacy Policy
             </a>

@@ -15,20 +15,6 @@ export const ServicesListing: Array<{ number: string; title: string; description
   },
   {
     number: "02",
-    title: "Social Media",
-    description:
-      "We craft engaging digital narratives that fuel meaningful conversations, foster communities, and amplify your brand's digital discourse.",
-    features: [
-      "Social Strategy & Community Planning",
-      "Visual Design & Content",
-      "Platform & Channel Management",
-      "Paid Social, Influencer Ad",
-      "Analytics, Insights & Optimization",
-    ],
-    source: "/videos/social-presentation.mp4",
-  },
-  {
-    number: "03",
     title: "Web Design & Development",
     description:
       "More than design, websites must impact. We weave user experience, aesthetics, gardens, images, and scale with your vision.",
@@ -42,7 +28,7 @@ export const ServicesListing: Array<{ number: string; title: string; description
     source: "/videos/web-presentation.mp4",
   },
   {
-    number: "04",
+    number: "03",
     title: "Creative Production",
     description:
       "Design should feel as good as it looks. We create emotionally resonant experiences that makes every interaction memorable and build trust or mediums.",
@@ -56,10 +42,24 @@ export const ServicesListing: Array<{ number: string; title: string; description
     source: "/videos/creative-presentation.mp4",
   },
   {
+    number: "04",
+    title: "Social Media",
+    description:
+      "We craft engaging digital narratives that fuel meaningful conversations, foster communities, and amplify your brand's digital discourse.",
+    features: [
+      "Social Strategy & Community Planning",
+      "Visual Design & Content",
+      "Platform & Channel Management",
+      "Paid Social, Influencer Ad",
+      "Analytics, Insights & Optimization",
+    ],
+    source: "/videos/social-presentation.mp4",
+  },
+  {
     number: "05",
     title: "Performance Marketing",
     description:
-      "We don’t just chase clicks, we turn data into domination, delivering ROI(X) that makes your growth impossible to ignore.",
+      "We don't just chase clicks, we turn data into domination, delivering ROI(X) that makes your growth impossible to ignore.",
     features: [
       "Paid Advertising (Google, Meta, LinkedIn)",
       "SEO & Content Optimization",
