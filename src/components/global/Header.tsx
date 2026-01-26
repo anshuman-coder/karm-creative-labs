@@ -12,7 +12,11 @@ const SCROLL_DOWN_DELAY = 200; // Hide header after 900ms of scrolling down
 const SCROLL_UP_DELAY = 200; // Show header after 500ms of scrolling up
 
 
-const Header = () => {
+interface HeaderProps {
+  className?: string;
+}
+
+const Header: FC<HeaderProps> = ({ className = '' }) => {
   const breakpoint = useBreakpoint();
   const [isMenuOpen, setisMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -129,16 +133,17 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "fixed top-0 right-0 left-0 z-50 w-full p-2 sm:p-8 md:pt-8 md:pb-4 transition-transform duration-500 ease-in-out bg-white",
-        isMenuOpen ? "bg-white/100 backdrop-blur-lg" : "bg-bg-neutral-white/90 backdrop-blur-md",
-        isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+        "fixed top-0 right-0 left-0 z-50 w-full p-2 sm:p-8 md:pt-8 md:pb-4 transition-transform duration-500 ease-in-out",
+        isMenuOpen ? "bg-white backdrop-blur-lg" : "bg-bg-neutral-white/90 backdrop-blur-md",
+        isHeaderVisible ? "translate-y-0" : "-translate-y-full",
+        className
       )}
     >
       <div
         className={clsx(
           "relative flex w-full flex-col items-start justify-start transition-all duration-200 ease-in-out",
           isMenuOpen
-            ? "rounded-2xl bg-gradient-to-br from-emerald-400 to-green-300"
+            ? "rounded-2xl bg-linear-to-br from-emerald-400 to-green-300"
             : "rounded-2xl bg-transparent",
         )}
       >
@@ -180,7 +185,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({
       <div className="flex w-full items-center justify-between px-1.5 py-3 md:px-6 md:py-4">
         <Logo className="w-20 h-9" />
         <div className="flex items-center justify-center gap-2">
-          <Button label="LET'S TALK" className="sm:py-5 !font-mono" onClick={letsTalkClick} />
+          <Button label="LET'S TALK" className="sm:py-5 font-mono!" onClick={letsTalkClick} />
           <Button
             iconBtn
             icon={
