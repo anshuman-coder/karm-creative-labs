@@ -24,11 +24,11 @@ export const NavMenuItems: Array<{
     key: "testimonials",
   },
   // for phase 2
-  // {
-  //   label: 'For Startup',
-  //   url: '',
-  //   key: 'for-startup'
-  // },
+  {
+    label: 'Startup',
+    url: '/startup',
+    key: 'for-startup'
+  },
   {
     label: "Contact",
     url: "/contact-us",
