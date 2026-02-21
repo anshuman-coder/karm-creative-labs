@@ -34,9 +34,9 @@ const WhoWeAre = () => {
           </p>
 
           {/* Stats Section */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between items-start space-y-8 xs:space-y-10 sm:space-y-12 md:space-y-0 md:space-x-12 lg:space-x-16 xl:space-x-20 w-full mt-8 xs:mt-12 sm:mt-16 md:mt-20">
+          <div className="flex flex-col md:flex-row items-center md:justify-between space-y-8 xs:space-y-10 sm:space-y-12 md:space-y-0 md:space-x-12 lg:space-x-16 xl:space-x-20 w-full mt-8 xs:mt-12 sm:mt-16 md:mt-20">
             {/* 50M+ */}
-            <div className="flex flex-col items-start md:items-center md:text-center">
+            <div className="flex flex-col items-center text-center">
               <h2 className="text-white font-rebond text-6xl xs:text-7xl sm:text-8xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none">
                 50M+
               </h2>
@@ -46,7 +46,7 @@ const WhoWeAre = () => {
             </div>
 
             {/* 3B+ */}
-            <div className="flex flex-col items-start md:items-center md:text-center">
+            <div className="flex flex-col items-center text-center">
               <h2 className="text-white font-rebond text-6xl xs:text-7xl sm:text-8xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none">
                 3B+
               </h2>
@@ -56,7 +56,7 @@ const WhoWeAre = () => {
             </div>
 
             {/* 12+ */}
-            <div className="flex flex-col items-start md:items-center md:text-center">
+            <div className="flex flex-col items-center text-center">
               <h2 className="text-white font-rebond text-6xl xs:text-7xl sm:text-8xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none">
                 12+
               </h2>

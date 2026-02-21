@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Button from "../global/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
 interface PricingTier {
   id: number;
@@ -112,7 +113,6 @@ const pricingTiers: PricingTier[] = [
   {
     id: 2,
     name: "Funding Ready",
-    badge: "100% Money-Back Guarantee",
     bgColor: "bg-black",
     textColor: "text-white",
     sections: [
@@ -291,21 +291,44 @@ const pricingTiers: PricingTier[] = [
 ];
 
 const Pricing = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? pricingTiers.length - 1 : prev - 1));
-  };
+  // Start with [0, 1, 2] where 1 (Funding Ready) is in center
+  const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === pricingTiers.length - 1 ? 0 : prev + 1));
+    setDirection('right');
+    setVisibleIndices((prev) => {
+      // Rotate left: [0, 1, 2] -> [1, 2, 0]
+      const newLeft = prev[1]!;
+      const newCenter = prev[2]!;
+      const newRight = (prev[2]! + 1) % pricingTiers.length;
+      return [newLeft, newCenter, newRight];
+    });
   };
 
-  const currentTier = pricingTiers[currentIndex];
+  const handlePrevious = () => {
+    setDirection('left');
+    setVisibleIndices((prev) => {
+      // Rotate right: [0, 1, 2] -> [2, 0, 1]
+      const newRight = prev[1]!;
+      const newCenter = prev[0]!;
+      const newLeft = prev[0] === 0 ? pricingTiers.length - 1 : prev[0]! - 1;
+      return [newLeft, newCenter, newRight];
+    });
+  };
+
+  const currentTier = pricingTiers[visibleIndices[1]!];
 
   return (
-    <div className="relative w-full bg-[#E5E5E5] py-12 xs:py-16 sm:py-20 md:py-28 lg:py-32 xl:py-40 overflow-hidden">
-      <div className="w-full max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+    <div className="relative w-full bg-bg-neutral-white py-12 xs:py-16 sm:py-20 md:py-28 lg:py-32 xl:py-40 overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 xl:px-0">
+        {/* 100% Money-Back Guarantee Badge */}
+        <div className="mb-8 xs:mb-10 sm:mb-12 md:mb-16 lg:mb-20">
+          <span className="inline-block bg-bg-header-sm text-black text-xs md:text-sm font-rebond font-semibold px-3 py-1.5 md:px-4 md:py-2 rounded-full">
+            ✓ 100% Money-Back Guarantee
+          </span>
+        </div>
+
         {/* Mobile Carousel View (xs screens) */}
         <div className="block sm:hidden">
           <div className="relative">
@@ -327,17 +350,39 @@ const Pricing = () => {
               </button>
             </div>
 
-            {/* Pricing Card */}
-            {currentTier && <PricingCard tier={currentTier} />}
+            {/* Pricing Card with Animation */}
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={visibleIndices[1]}
+                custom={direction}
+                initial={{ opacity: 0, x: direction === 'right' ? 100 : -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction === 'right' ? -100 : 100 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              >
+                {currentTier && <PricingCard tier={currentTier} isActive />}
+              </motion.div>
+            </AnimatePresence>
 
             {/* Dots Indicator */}
             <div className="flex items-center justify-center gap-2 mt-6">
               {pricingTiers.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => {
+                    const currentCenter = visibleIndices[1]!;
+                    if (index === currentCenter) return;
+
+                    // Determine direction and number of clicks needed
+                    setDirection(index > currentCenter ? 'right' : 'left');
+
+                    // Update visible indices to jump to selected card
+                    const newLeft = index === 0 ? pricingTiers.length - 1 : index - 1;
+                    const newRight = (index + 1) % pricingTiers.length;
+                    setVisibleIndices([newLeft, index, newRight]);
+                  }}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? "bg-black w-6" : "bg-gray-400"
+                    index === visibleIndices[1] ? "bg-black w-6" : "bg-gray-400"
                   }`}
                   aria-label={`Go to pricing tier ${index + 1}`}
                 />
@@ -358,14 +403,20 @@ const Pricing = () => {
               <ChevronLeft className="w-6 h-6" />
             </button>
 
-            {/* Pricing Card */}
-            {
-              currentTier && (
-                <div className="flex-1">
-                  <PricingCard tier={currentTier} />
-                </div>
-              )
-            }
+            {/* Pricing Card with Animation */}
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={visibleIndices[1]}
+                custom={direction}
+                initial={{ opacity: 0, x: direction === 'right' ? 200 : -200 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction === 'right' ? -200 : 200 }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                className="flex-1"
+              >
+                {currentTier && <PricingCard tier={currentTier} isActive />}
+              </motion.div>
+            </AnimatePresence>
 
             {/* Right Arrow */}
             <button
@@ -378,28 +429,63 @@ const Pricing = () => {
           </div>
         </div>
 
-        {/* Desktop Grid View (lg screens and above) */}
+        {/* Desktop Carousel View (lg screens and above) */}
         <div className="hidden lg:flex lg:items-center lg:gap-6 xl:gap-8">
           {/* Left Arrow */}
           <button
             onClick={handlePrevious}
-            className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors bg-white shrink-0"
+            className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors bg-white shrink-0 z-20"
             aria-label="Previous pricing tier"
           >
             <ChevronLeft className="w-7 h-7" />
           </button>
 
-          {/* All Cards */}
-          <div className="grid grid-cols-3 gap-6 xl:gap-8 flex-1">
-            {pricingTiers.map((tier) => (
-              <PricingCard key={tier.id} tier={tier} isLargeScreen />
-            ))}
+          {/* Carousel Container */}
+          <div className="relative flex-1 grid grid-cols-3 gap-6 xl:gap-8 items-center justify-items-center">
+            <AnimatePresence initial={false} mode="popLayout">
+              {visibleIndices.map((tierIndex, position) => {
+                const isCenter = position === 1;
+
+                return (
+                  <motion.div
+                    key={`${tierIndex}-${position}`}
+                    layout
+                    initial={{
+                      x: direction === 'right' ? 400 : -400,
+                      opacity: 0,
+                      scale: isCenter ? 1.05 : 1,
+                    }}
+                    animate={{
+                      x: 0,
+                      opacity: 1,
+                      scale: isCenter ? 1.05 : 1,
+                    }}
+                    exit={{
+                      x: direction === 'right' ? -400 : 400,
+                      opacity: 0,
+                      scale: 1,
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                    className={`${isCenter ? 'z-10' : 'z-0'} w-full`}
+                  >
+                    <PricingCard
+                      tier={pricingTiers[tierIndex]!}
+                      isActive={isCenter}
+                      isLargeScreen
+                    />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
 
           {/* Right Arrow */}
           <button
             onClick={handleNext}
-            className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors bg-white shrink-0"
+            className="w-14 h-14 rounded-full border-2 border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors bg-white shrink-0 z-20"
             aria-label="Next pricing tier"
           >
             <ChevronRight className="w-7 h-7" />
@@ -412,14 +498,30 @@ const Pricing = () => {
 
 interface PricingCardProps {
   tier: PricingTier;
-  isMediumScreen?: boolean;
+  isActive?: boolean;
   isLargeScreen?: boolean;
 }
 
-const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
+const PricingCard: React.FC<PricingCardProps> = ({ tier, isActive = false, isLargeScreen = false }) => {
+  const router = useRouter();
+
+  const handleBookCall = () => {
+    void router.push("/contact-us");
+  };
+
+  // On large screens (desktop), the center/active card gets black background
+  // Side cards on desktop get white background
+  // On mobile/tablet, use the original tier background
+  const backgroundColor = isLargeScreen
+    ? (isActive ? 'bg-black' : 'bg-white')
+    : tier.bgColor;
+  const textColor = isLargeScreen
+    ? (isActive ? 'text-white' : 'text-black')
+    : tier.textColor;
+
   return (
     <div
-      className={`${tier.bgColor} ${tier.textColor} rounded-3xl p-6 xs:p-7 sm:p-8 md:p-10 lg:p-8 xl:p-10 border-2 border-black shadow-lg min-h-[600px] md:min-h-[700px] lg:min-h-[650px] xl:min-h-[750px] flex flex-col`}
+      className={`${backgroundColor} ${textColor} rounded-3xl p-6 xs:p-7 sm:p-8 md:p-10 lg:p-8 xl:p-10 border-2 border-black shadow-lg w-full flex flex-col transition-all duration-300`}
     >
       {/* Badge */}
       {tier.badge && (
@@ -437,10 +539,12 @@ const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
 
       {/* Book a Free Call Button */}
       <div className="mb-6 md:mb-7 lg:mb-6">
-        <Button
-          label="Book a free call"
-          className="text-sm! md:text-base! py-2! px-4! md:px-5! rounded-full! font-rebond! font-semibold!"
-        />
+        <button
+          onClick={handleBookCall}
+          className="bg-white text-black font-rebond font-semibold text-sm md:text-base px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-black hover:bg-gray-100 transition-colors duration-200"
+        >
+          Book a free call
+        </button>
       </div>
 
       {/* Sections */}
