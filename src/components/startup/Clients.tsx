@@ -56,7 +56,7 @@ const Clients = () => {
         </div>
 
         {/* Client Logos Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-8 xs:gap-10 sm:gap-12 md:gap-14 lg:gap-16 xl:gap-20 items-center justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-8 xs:gap-10 sm:gap-12 md:gap-14 lg:gap-16 xl:gap-20 items-center justify-items-center mb-16 xs:mb-20 sm:mb-24 md:mb-28 lg:mb-32">
           {clientLogos.map((client) => (
             <div
               key={client.id}

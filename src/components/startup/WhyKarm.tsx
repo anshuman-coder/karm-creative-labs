@@ -17,7 +17,7 @@ const testimonials: Testimonial[] = [
     company: "FINASTRA",
     rating: 5,
     quote: "With karm we've seen a 40% improvement in our total go-to-market efficiency!",
-    image: "/testimonials/person-1.png",
+    image: "/testimonials/person-1.jpg",
     name: "Testimonial 1",
   },
   {
@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     quote: "Karm Labs transformed our startup journey with their exceptional expertise and dedication.",
     //need to make it person-2.jpg, once we have correct images and content.
-    image: "/testimonials/person-1.png",
+    image: "/testimonials/person-1.jpg",
     name: "Testimonial 2",
   },
   {
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
     quote: "The best decision we made was partnering with Karm Labs for our product development.",
     //need to make it person-3.jpg, once we have correct images and content.
-    image: "/testimonials/person-1.png",
+    image: "/testimonials/person-1.jpg",
     name: "Testimonial 3",
   },
 ];
@@ -54,7 +54,7 @@ const WhyKarm = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <div className="relative w-full bg-[#E5E5E5] py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 xl:py-40 overflow-hidden">
+    <div className="relative w-full bg-bg-neutral-white py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 xl:py-40 overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-6 xs:px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24">
         {/* Header Section */}
         <div className="text-center mb-12 xs:mb-16 sm:mb-20 md:mb-24 lg:mb-28">
@@ -114,44 +114,33 @@ const WhyKarm = () => {
         {
           currentTestimonial && (
             <div className="hidden md:flex lg:hidden justify-center items-center">
-              <div className="max-w-2xl w-full">
-                <div className="flex items-center gap-6">
-                  {/* Image */}
-                  <div className="relative w-1/2 shrink-0">
-                    <div className="relative w-full aspect-3/4 rounded-3xl overflow-hidden border-8 border-bg-header-sm">
-                      <Image
-                        src={currentTestimonial.image}
-                        alt={currentTestimonial.name}
-                        fill
-                        className="object-cover"
-                        quality={90}
-                      />
-                    </div>
+              <div className="max-w-3xl w-full flex">
+                {/* User Image - Left Side with rounded left corners */}
+                <div className="relative w-2/5 py-2 shrink-0">
+                  <div className="relative w-full h-auto aspect-4/3 rounded-3xl overflow-hidden border-8 border-bg-header-sm">
+                    <Image
+                      src={currentTestimonial.image}
+                      alt={currentTestimonial.name}
+                      fill
+                      className="object-cover w-full h-full"
+                      quality={90}
+                    />
                   </div>
+                </div>
 
-                  {/* Content */}
-                  <div className="bg-bg-header-sm rounded-3xl p-8 flex-1">
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="font-rebond text-black text-2xl font-bold">
-                        {currentTestimonial.company}
-                      </h4>
-                      <div className="flex gap-1">
-                        {[...Array(currentTestimonial.rating)].map((_, index) => (
-                          <svg
-                            key={index}
-                            className="w-5 h-5 text-yellow-400"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                    <blockquote className="font-rebond text-black text-xl font-semibold leading-relaxed">
-                      &ldquo;{currentTestimonial.quote}&rdquo;
-                    </blockquote>
+                {/* Testimonial Content - Right Side connected to image */}
+                <div className="flex-1 bg-bg-header-sm rounded-3xl p-8 flex flex-col justify-center -ml-6">
+                  <div className="mb-4">
+                    <h3 className="text-black font-rebond text-2xl font-bold mb-2">
+                      {currentTestimonial.company}
+                      <span className="ml-3 text-yellow-400">
+                        {"⭐".repeat(currentTestimonial.rating)}
+                      </span>
+                    </h3>
                   </div>
+                  <p className="text-black font-rebond text-xl font-bold leading-tight">
+                    &ldquo;{currentTestimonial.quote}&rdquo;
+                  </p>
                 </div>
               </div>
             </div>
@@ -162,44 +151,33 @@ const WhyKarm = () => {
         {
           currentTestimonial && (
             <div className="hidden lg:flex justify-center items-center">
-              <div className="max-w-4xl w-full">
-                <div className="flex items-center gap-8">
-                  {/* Image */}
-                  <div className="relative w-1/2 shrink-0">
-                    <div className="relative w-full aspect-3/4 rounded-3xl overflow-hidden border-8 border-bg-header-sm">
-                      <Image
-                        src={currentTestimonial.image}
-                        alt={currentTestimonial.name}
-                        fill
-                        className="object-cover"
-                        quality={90}
-                      />
-                    </div>
+              <div className="max-w-5xl w-full flex">
+                {/* User Image - Left Side with rounded left corners */}
+                <div className="relative w-2/5 py-2 shrink-0">
+                  <div className="relative w-full h-auto aspect-4/3 rounded-3xl overflow-hidden border-8 border-bg-header-sm">
+                    <Image
+                      src={currentTestimonial.image}
+                      alt={currentTestimonial.name}
+                      fill
+                      className="object-cover w-full h-full"
+                      quality={90}
+                    />
                   </div>
+                </div>
 
-                  {/* Content */}
-                  <div className="bg-bg-header-sm rounded-3xl p-10 xl:p-12 flex-1">
-                    <div className="flex items-center justify-between mb-5">
-                      <h4 className="font-rebond text-black text-3xl xl:text-4xl font-bold">
-                        {currentTestimonial.company}
-                      </h4>
-                      <div className="flex gap-1">
-                        {[...Array(currentTestimonial.rating)].map((_, index) => (
-                          <svg
-                            key={index}
-                            className="w-6 h-6 text-yellow-400"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                    <blockquote className="font-rebond text-black text-2xl xl:text-3xl font-semibold leading-relaxed">
-                      &ldquo;{currentTestimonial.quote}&rdquo;
-                    </blockquote>
+                {/* Testimonial Content - Right Side connected to image */}
+                <div className="flex-1 bg-bg-header-sm rounded-3xl p-12 xl:p-16 flex flex-col justify-center -ml-6">
+                  <div className="mb-4">
+                    <h3 className="text-black font-rebond text-3xl xl:text-4xl font-bold mb-2">
+                      {currentTestimonial.company}
+                      <span className="ml-3 text-yellow-400">
+                        {"⭐".repeat(currentTestimonial.rating)}
+                      </span>
+                    </h3>
                   </div>
+                  <p className="text-black font-rebond text-2xl xl:text-3xl font-bold leading-tight">
+                    &ldquo;{currentTestimonial.quote}&rdquo;
+                  </p>
                 </div>
               </div>
             </div>
@@ -217,45 +195,30 @@ interface TestimonialCardProps {
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
   return (
     <div className="flex flex-col items-center">
-      {/* Image Container with Green Border */}
-      <div className="relative w-full max-w-sm mb-6">
-        <div className="relative w-full aspect-4/5 rounded-3xl overflow-hidden border-8 border-bg-header-sm">
-          <Image
+      {/* User Image - Top with rounded top corners */}
+      <div className="relative w-full h-auto max-w-[420px] aspect-4/3 rounded-3xl overflow-hidden border-8 border-bg-header-sm">
+        <Image
             src={testimonial.image}
             alt={testimonial.name}
             fill
-            className="object-cover"
+            className="object-contain w-full h-full"
             quality={90}
           />
-        </div>
       </div>
 
-      {/* Testimonial Content */}
-      <div className="bg-bg-header-sm rounded-3xl p-6 xs:p-8 w-full max-w-sm">
-        {/* Company Name */}
-        <div className="flex items-center justify-between mb-3">
-          <h4 className="font-rebond text-black text-xl xs:text-2xl font-bold">
+      {/* Testimonial Content - Bottom connected to image */}
+      <div className="bg-bg-header-sm rounded-3xl p-6 xs:p-8 sm:p-10 -mt-6 max-w-md">
+        <div className="mb-4">
+          <h3 className="text-black font-rebond text-xl xs:text-2xl sm:text-3xl font-bold mb-2">
             {testimonial.company}
-          </h4>
-          {/* Star Rating */}
-          <div className="flex gap-1">
-            {[...Array(testimonial.rating)].map((_, index) => (
-              <svg
-                key={index}
-                className="w-5 h-5 text-yellow-400"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
+            <span className="ml-2 text-yellow-400">
+              {"⭐".repeat(testimonial.rating)}
+            </span>
+          </h3>
         </div>
-
-        {/* Quote */}
-        <blockquote className="font-rebond text-black text-base xs:text-lg sm:text-xl font-semibold leading-relaxed">
+        <p className="text-black font-rebond text-lg xs:text-xl sm:text-2xl font-bold leading-tight">
           &ldquo;{testimonial.quote}&rdquo;
-        </blockquote>
+        </p>
       </div>
     </div>
   );
